@@ -14,9 +14,7 @@ Abra o seu cmd na pasta local do projeto e digite o comando git clone seguido da
 git clone https://github.com/USERNAME/NOME_DO_REPOSITORIO.git
 ```
 
-- Crie o ambiente mini-conda: [https\://docs.conda.io/](https://docs.conda.io/)  
-- Rode o requirement.txt presente no repositório  
-- Instale o Pillow no ambiente com o comando `conda install Pillow`
+- Para a inicialização do projeto, realizar ```npm install```
 
 ### 2\) Desenvolvimento de BRANCHES e COMMITS
 
@@ -30,15 +28,15 @@ Cria-se um Pull Request para cada classe/microservice/app e em seguida um Merge
 
 Utilize o comando git checkout \-b para criar e alternar para a nova branch e nomeie-a conforme a issue sendo resolvida
 
-> Exemplo: `git checkout -b feat-app-name-here`
+> Exemplo: `git checkout -b feat/app-name-here`
 
-> Exemplo: `git checkout -b feat-espectador`
+> Exemplo: `git checkout -b feat/espectador`
 
 ### 4.1) Crie um Commit
 
 Crie um commit e adicione a mensagem indicando a issue resolvida:
 
-> Exemplo: `git commit -m "feat: create view-user"`
+> Exemplo: `git commit -m "create view-user"`
 
 ### 4.2) Tipos de nomenclaturas
 
