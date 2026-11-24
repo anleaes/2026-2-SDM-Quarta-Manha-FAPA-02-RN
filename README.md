@@ -9,3 +9,7 @@
 **Estrutura**
 
 * Para cada apps feito pela estrutura Django, fazer um diretorio em <b>/screen</b> com o nome do app a ser realizado
+
+**Expo go**
+
+Tentar realizar os testes no Expo GO será apenas viavel se o dispositivo host e o dispositivo que quiser se conectar estiverem ma mesma rede.
