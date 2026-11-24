@@ -1,11 +1,5 @@
 import DrawerNavigator from '@/navigation/DrawNavigator';
-import { NavigationContainer } from '@react-navigation/native';
-import { registerRootComponent } from "expo";
 
-const App = () => (
-  <NavigationContainer>
+export default function App() {
     <DrawerNavigator></DrawerNavigator>
-  </NavigationContainer>
-)
-
-registerRootComponent(App)
+}
