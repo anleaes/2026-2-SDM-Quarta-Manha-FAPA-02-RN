@@ -1,5 +1,6 @@
 
 import EventosScreen from '@/screens/evento/EventosScreen';
+import SedesScreen from '@/screens/sede/SedesScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -8,6 +9,7 @@ import CustomDrawerContent from '../components/CustomDrawerContent';
 export type DrawerParamList = {
     Home: undefined,
     Evento: undefined,
+    Sede: undefined,
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -41,6 +43,14 @@ const DrawerNavigator = () => {
                 options={{
                     drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
                     title: 'Eventos',
+                }}
+            />
+            <Drawer.Screen
+                name='Sede'
+                component={SedesScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Sedes',
                 }}
             />
             
