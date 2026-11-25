@@ -34,7 +34,7 @@ const SedesScreen = ({navigation}: Props) => {
     )
 
     const handleDelete = async (id: number) => {
-        const res = await fetch(`http://localhost:8000/sede/${id}`, {
+        const res = await fetch(`http://localhost:8000/sede/${id}/`, {
             method: 'DELETE',
         })
         setSedes(prev => prev.filter(sede => sede.id !== id))
