@@ -20,7 +20,9 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "output": "server",
+      // O Ionicons quebra ao ser importado para a versão web
+      // uma solução é mudar output para single, deixando o navegador renderizar o html e js ao inves do expo
+      "output": "single",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
