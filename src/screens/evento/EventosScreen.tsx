@@ -42,11 +42,24 @@ const EventosScreen = ({navigation}: Props) => {
         setEventos(prev => prev.filter(evento => evento.id !== id))
     }
 
-    const renderItem = ({item}: {item: Evento}) => {
-        <View>
-            
+    const renderItem = ({item}: {item: Evento}) => (
+        <View style={styles.card}>
+            <Text style={styles.nome}>{item.nome}</Text>
+            <Text style={styles.descricao}>{item.descricao}</Text>
+            <TouchableOpacity
+                style={styles.editButton}
+                onPress={() => {} /*navigation.navigate('EditCategory', {evento: item})*/}
+            >
+                <Text style={styles.editText}>Editar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.deleteButton}
+                onPress={() => handleDelete(item.id)}
+            >
+                <Text style={styles.editText}>Deletar</Text>
+            </TouchableOpacity>
         </View>
-    }
+    )
 
 
     return (
@@ -81,6 +94,43 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 16
     },
+    card: {
+        backgroundColor: '#f0f4ff',
+        padding: 16,
+        borderRadius: 10,
+        marginBottom: 12,
+        elevation: 2,
+        shadowColor: 'black',
+        shadowOpacity: 0.05,
+        shadowOffset: { width: 0, height: 2},
+        shadowRadius: 4
+    },
+    nome: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#222',
+    },
+    descricao: {
+        fontSize: 14,
+        color: '#666',
+        marginTop: 4,
+    },
+    editButton: {
+        backgroundColor: 'rgb(2, 109, 25)',
+        padding: 8,
+        borderRadius: 6,
+        marginRight: 8
+    },
+    editText: {
+        color: '#fff',
+        fontWeight: '500'
+    },
+    deleteButton: {
+        backgroundColor: '#E54848',
+        padding: 8,
+        borderRadius: 6,
+        marginRight: 8,
+    },
     fab: {
         position: 'absolute',
         right: 20,
@@ -92,3 +142,4 @@ const styles = StyleSheet.create({
     }
 })
 
+export default EventosScreen
