@@ -6,7 +6,7 @@ const CustomDrawerContent = (props: any) => {
     <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
       <View style={styles.header}>
         <Image
-          source={require('@/assets/images/splash-icon.png')}
+          source={require('@/assets/images/ticket.png')}
           style={styles.avatar}
         />
         <Text style={styles.name}>Olá, Usuário!</Text>

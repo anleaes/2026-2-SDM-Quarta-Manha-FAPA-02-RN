@@ -4,8 +4,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function TabLayout() {
   return (
-    <GestureHandlerRootView>
-      <Stack>
+    <GestureHandlerRootView style= {{flex: 1}}>
+      <Stack screenOptions={{ headerShown: false}}>
         <Stack.Screen name="index" />
       </Stack>
     </GestureHandlerRootView>

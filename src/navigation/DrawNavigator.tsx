@@ -1,7 +1,7 @@
 
+import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Text, View } from 'react-native';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 
 export type DrawerParamList = {
@@ -10,11 +10,6 @@ export type DrawerParamList = {
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
 
-const PlaceholderScreen = () => (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text> Temporario </Text>
-    </View>
-)
 
 const DrawerNavigator = () => {
     return (
@@ -32,7 +27,7 @@ const DrawerNavigator = () => {
         
             <Drawer.Screen
                 name='Home'
-                component={PlaceholderScreen}
+                component={HomeScreen}
                 options={{
                     drawerIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color}  />,
                     title: 'Início',
