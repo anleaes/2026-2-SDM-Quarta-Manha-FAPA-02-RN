@@ -40,10 +40,26 @@ const SedesScreen = ({navigation}: Props) => {
         setSedes(prev => prev.filter(sede => sede.id !== id))
     }
 
-    const renderItem = ({item}: {item: Sede}) => {
-        <View>
+     const renderItem = ({item}: {item: Sede}) => (
+        <View style={styles.card}>
+            <Text style={styles.nome}>{item.nome}</Text>
+            <Text style={styles.texto}>{item.endereco}</Text>
+            <Text style={styles.texto}>{item.cnpj}</Text>
+            <Text style={styles.status}>{item.status}</Text>
+            <TouchableOpacity
+                style={styles.editButton}
+                onPress={() => {} }
+            >
+                <Text style={styles.editText}>Editar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.deleteButton}
+                onPress={() => handleDelete(item.id)}
+            >
+                <Text style={styles.editText}>Deletar</Text>
+            </TouchableOpacity>
         </View>
-    }
+    )
 
 
     return (
@@ -76,6 +92,47 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 16
     },
+      card: {
+        backgroundColor: '#f0f4ff',
+        padding: 16,
+        borderRadius: 10,
+        marginBottom: 12,
+        elevation: 2,
+        shadowColor: 'black',
+        shadowOpacity: 0.05,
+        shadowOffset: { width: 0, height: 2},
+        shadowRadius: 4
+    },
+    nome: {
+        fontSize: 18,
+        fontWeight: '600',
+        color: '#222',
+    },
+    texto: {
+        fontSize: 14,
+        color: '#666',
+        marginTop: 4,
+    },
+    status:{
+        fontSize: 20,
+        color: '#000'
+    },
+    editButton: {
+        backgroundColor: 'rgb(2, 109, 25)',
+        padding: 8,
+        borderRadius: 6,
+        marginRight: 8
+    },
+    editText: {
+        color: '#fff',
+        fontWeight: '500'
+    },
+    deleteButton: {
+        backgroundColor: '#E54848',
+        padding: 8,
+        borderRadius: 6,
+        marginRight: 8,
+    },
     fab: {
         position: 'absolute',
         right: 20,
@@ -86,3 +143,5 @@ const styles = StyleSheet.create({
         elevation: 4
     }
 })
+
+export default SedesScreen
