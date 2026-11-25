@@ -1,7 +1,7 @@
 import { NOME_APPS } from "@/constants/nome_apps";
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 
 type Props = DrawerScreenProps<DrawerParamList, 'Home'>
@@ -16,17 +16,26 @@ const HomeScreen = ({navigation} : Props) => {
                 <Text style={styles.descricao}>VOCÊ FAZ ISSO FUNCIONAR</Text>
             </View>
             {/*Grid dos botoes*/}
-            <ScrollView>
+            <ScrollView contentContainerStyle={styles.gridBotoes}>
                 {/*Iteracao para montar os botoes*/}
                 {NOME_APPS.map((apps) => (
-                    <TouchableOpacity
+                    <Pressable
                         key={apps.id}
-                        style={[styles.entidadeBotao, {borderLeftColor: apps.color}]}
-                        activeOpacity={0.6}
-                        onPress={() => {}} // adicionar as screens depois
+                        style={({ pressed, hovered}: any) => [
+                            styles.entidadeBotao,
+                            {borderLeftColor: apps.color},
+                            (pressed || hovered) && {
+                                backgroundColor: apps.color,
+                                paddingLeft: 18
+                            }
+                        ]}
                     >
-                        <Text>{apps.label}</Text>
-                    </TouchableOpacity>
+                        {({ pressed, hovered}: any) => (
+                            <Text
+                                style={[styles.entidadeTexto, (pressed || hovered) && {color: 'black'}]}
+                            >{apps.label}</Text>
+                        )}
+                    </Pressable>
                 ))}
             </ScrollView>
             
@@ -61,12 +70,28 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         letterSpacing: 0.5
     },
+    gridBotoes: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        padding: 12,
+        gap: 12
+    },
     entidadeBotao: {
+        width: '47%',
+        minHeight: 80,
         backgroundColor: 'white',
-        paddingVertical: 16,
-        paddingHorizontal: 16,
+        paddingVertical: 14,
+        paddingHorizontal: 10,
         borderRadius: 8,
         borderLeftWidth: 5,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    entidadeTexto: {
+        fontSize: 16,
+        fontWeight: '500',
+        textAlign: 'center',
     }
 })
 
