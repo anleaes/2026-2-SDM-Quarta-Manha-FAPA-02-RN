@@ -1,6 +1,7 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator"
 import { DrawerScreenProps } from "@react-navigation/drawer"
-import { useState } from "react"
+import { useFocusEffect } from "expo-router"
+import { useCallback, useState } from "react"
 import { Evento } from "../evento/EventosScreen"
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriarCupom'>
@@ -15,7 +16,7 @@ const CriarCupomScreen = ({navigation}: Props) => {
     const [dataVencimento, setDataVencimento] = useState('')
     //Buscar os eventos validos para o cupom
     const [eventosValidos, setEventosValidos] = useState<Evento[]>([])
-    const [eventosSelecionados, setEventosSelecionados] = useState<Evento[]>([])
+    const [eventosSelecionados, setEventosSelecionados] = useState<number[]>([])
     const [saving, setSaving] = useState(false)
     const [erro, setErro] = useState('')
 
@@ -32,7 +33,22 @@ const CriarCupomScreen = ({navigation}: Props) => {
         }
     }
 
-    
+    useFocusEffect(
+        useCallback(() => {
+            setPorcentagemDesconto('1')
+            setDataVencimento('')
+            setEventosSelecionados([])
+            setErro('')
+            fetchEventos()
+        }, [])
+    )
+
+    //Marcar e Desmarcar o ID do evento no array
+    const toggleEvento = (id: number) => {
+        setEventosSelecionados((prev) => 
+            prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+        )
+    }
 
     return null
 }
