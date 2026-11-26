@@ -1,11 +1,17 @@
 
+import CriarEventoScreen from '@/screens/evento/CriarEventoScreen';
+import EditarEventoScreen from '@/screens/evento/EditarEventoScreen';
+import EventosScreen, { Evento } from '@/screens/evento/EventosScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 
 export type DrawerParamList = {
-    Home: undefined
+    Home: undefined,
+    Evento: undefined,
+    CriarEvento: undefined,
+    EditarEvento: {evento: Evento},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -32,9 +38,32 @@ const DrawerNavigator = () => {
                     drawerIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color}  />,
                     title: 'Início',
                 }}
-            >
+            />
+            <Drawer.Screen
+                name='Evento'
+                component={EventosScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Eventos',
+                }}
+            />
+            <Drawer.Screen
+                name='CriarEvento'
+                component={CriarEventoScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Evento',
+                }}
+            />
+            <Drawer.Screen
+                name='EditarEvento'
+                component={EditarEventoScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Evento',
+                }}
+            />
 
-            </Drawer.Screen>
 
         </Drawer.Navigator>
     )
