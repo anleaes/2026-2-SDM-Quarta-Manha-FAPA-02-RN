@@ -22,7 +22,7 @@ const EventosScreen = ({navigation}: Props) => {
 
     const fetchEventos = async() => {
         setCarregamento(true)
-        const response = await fetch('http://localhost:8000/evento/')
+        const response = await fetch('http://localhost:8000/evento/', { cache: 'no-store'})
         const data = await response.json()
         setEventos(data)
         setCarregamento(false)
@@ -36,7 +36,7 @@ const EventosScreen = ({navigation}: Props) => {
 
 
     const handleDelete = async (id: number) => {
-        const res = await fetch(`http://localhost:8000/evento/${id}`, {
+        const res = await fetch(`http://localhost:8000/evento/${id}/`, {
             method: 'DELETE',
         })
         setEventos(prev => prev.filter(evento => evento.id !== id))
@@ -139,7 +139,7 @@ const EventosScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => {} /*navigation.navigate('CriarEvento')*/}
+                onPress={() => navigation.navigate('CriarEvento')}
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>
