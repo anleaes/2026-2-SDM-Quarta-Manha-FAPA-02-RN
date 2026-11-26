@@ -84,7 +84,14 @@ const CriarEventoScreen = ({navigation}: Props) => {
                     } as any)
                 }
             }
+
+            await fetch('http://localhost:8000/evento/', {
+                method: 'POST',
+                body: formData
+            })
         
+            navigation.navigate('Evento')
+
         }catch(e){
             console.error("Erro ao enviar formulario: ", e)
         }finally{
