@@ -188,7 +188,7 @@ const EditarEventoScreen = ({route, navigation}: Props) => {
                             style={styles.fileButton}
                             onPress={escolherRegras}
                         >
-                            <Text style={styles.fileButtonText}>{regras ? "Trocar Regras" : "Escolher Regras"}</Text>
+                            <Text style={styles.fileButtonText}>{regras || evento.regras ? "Trocar Regras" : "Escolher Regras"}</Text>
                         </TouchableOpacity>
                         {regras ? (
                             <Text style={styles.fileName}>Novo Arquivo: {regras.name}</Text>
