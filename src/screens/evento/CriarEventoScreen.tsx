@@ -8,6 +8,8 @@ import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TextInput, Touc
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriarEvento'>
 
+//COR PADRAO DO APP
+const COR_ENTIDADE = 'rgb(2, 109, 25)'
 
 const CriarEventoScreen = ({navigation}: Props) => {
     
@@ -16,7 +18,9 @@ const CriarEventoScreen = ({navigation}: Props) => {
     const [banner, setBanner] = useState<ImagePicker.ImagePickerAsset | null>(null)
     const [regras, setRegras] = useState<DocumentPicker.DocumentPickerAsset | null>(null)
     const [saving, setSaving] = useState(false)
+    const [erro, setErro] = useState('')
 
+    
 
     useFocusEffect(
         useCallback(() => {
@@ -24,6 +28,7 @@ const CriarEventoScreen = ({navigation}: Props) => {
             setDescricao("")
             setBanner(null)
             setRegras(null)
+            setErro('')
         }, [])
     )
 
@@ -61,8 +66,13 @@ const CriarEventoScreen = ({navigation}: Props) => {
     */
 
     const handleSave = async() => {
-        setSaving(true)
 
+        if(!nome.trim()){
+            setErro('O campo Nome é obrigatório.')
+            return
+        }
+        setErro('')
+        setSaving(true)
         try{
             const formData = new FormData()
             
@@ -96,15 +106,23 @@ const CriarEventoScreen = ({navigation}: Props) => {
                 }
             }
 
-            await fetch('http://localhost:8000/evento/', {
+            //verificacao de erros
+
+
+            const res = await fetch('http://localhost:8000/evento/', {
                 method: 'POST',
                 body: formData
             })
+
+            if(!res.ok){
+                setErro('Erro ao salvar o evento. Verifique os dados.')
+                return
+            }
         
             navigation.navigate('Evento')
 
         }catch(e){
-            console.error("Erro ao enviar formulario: ", e)
+            setErro('Não foi possivel conectar ao servidor.')
         }finally{
             setSaving(false)
         }
@@ -197,7 +215,7 @@ const CriarEventoScreen = ({navigation}: Props) => {
                     {/*Botão para envio*/}
                     <View style={styles.acoesContainer}>
                         {saving ? (
-                            <ActivityIndicator size='large' color='rgb(2, 109, 25)'/>
+                            <ActivityIndicator size='large' color={COR_ENTIDADE}/>
                         ) : (
                             <TouchableOpacity
                                 style={styles.submitButton}
@@ -215,16 +233,23 @@ const CriarEventoScreen = ({navigation}: Props) => {
                             <Text>VOLTAR</Text>
                         </TouchableOpacity>
                     </View>
-
                 </View>
 
+                {/*Erros*/}
+                {!!erro && (
+                    <View style={styles.erroBox}>
+                        <Text style={styles.erroText}>{erro}</Text>
+                    </View>
+                )}
+
             </ScrollView>
-
-
         </View>
 
     )
 }
+
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -244,7 +269,7 @@ const styles = StyleSheet.create({
     },
     tituloBox: {
         backgroundColor: 'white',
-        borderColor: 'rgb(2, 109, 25)',
+        borderColor: COR_ENTIDADE,
         borderWidth: 5,
         borderTopWidth: 10,
         borderBottomWidth: 0,
@@ -266,7 +291,7 @@ const styles = StyleSheet.create({
     formCard: {
         width: '100%',
         backgroundColor: "rgba(216, 237, 247, 0.95)",
-        borderColor: 'rgb(2, 109, 25)',
+        borderColor: COR_ENTIDADE,
         borderWidth: 3,
         borderBottomWidth: 14,
         borderRadius: 16,
@@ -311,7 +336,7 @@ const styles = StyleSheet.create({
         elevation: 2
     },
     fileButtonText: {
-        color: 'rgb(2, 109, 25)',
+        color: COR_ENTIDADE,
         fontWeight: 'bold',
         fontSize: 14
     },
@@ -327,7 +352,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         marginTop: 10,
         borderWidth: 2,
-        borderColor: 'rgb(2, 109, 25)'
+        borderColor: COR_ENTIDADE
     },
     acoesContainer: {
         marginTop: 12,
@@ -354,6 +379,22 @@ const styles = StyleSheet.create({
     voltarButton: {
         paddingVertical: 8,
         paddingHorizontal: 20
+    },
+    erroBox: {
+        marginTop: 14,
+        width: '100%',
+        borderWidth: 3,
+        borderColor: 'red',
+        backgroundColor: 'rgba(255,0,0,0.25)',
+        borderRadius: 10,
+        padding: 10,
+        alignItems: 'center'
+    },
+    erroText: {
+        color: '#800000',
+        fontWeight: 'bold',
+        fontSize: 14,
+        textAlign: 'center'
     }
 })
 
