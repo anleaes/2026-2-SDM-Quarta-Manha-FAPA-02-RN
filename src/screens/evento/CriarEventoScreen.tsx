@@ -4,7 +4,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriarEvento'>
 
@@ -117,12 +117,39 @@ const CriarEventoScreen = ({navigation}: Props) => {
                 style={[StyleSheet.absoluteFill, styles.image]}
                 resizeMode='cover'
             />
-
+            
             <ScrollView contentContainerStyle={styles.scrollContent}>
+                
+                {/*Titulo*/}
                 <View style={styles.tituloBox}>
                     <Text style={styles.titulo}>CRIAR EVENTO</Text>
                 </View>
+
+                {/*Corpo do formulario*/}
+                <View style={styles.formCard}>
+
+                    {/*Nome*/}
+                    <View style={styles.campoGrupo}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Nome:</Text>
+                        </View>
+                        <TextInput
+                            value={nome}
+                            onChangeText={setNome}
+                            style={styles.input}
+                            placeholder="Digite o nome do evento"
+                            placeholderTextColor="#777"
+                        />
+                    </View>
+                    {/*Banner*/}
+                    {/*Regras*/}
+                    {/*Descricao*/}
+
+                </View>
+
             </ScrollView>
+
+
         </View>
 
     )
@@ -164,6 +191,40 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgb(117,116,116)',
         textShadowOffset: { width: 0, height: 3},
         textShadowRadius: 1
+    },
+    formCard: {
+        width: '100%',
+        backgroundColor: "rgba(216, 237, 247, 0.95)",
+        borderColor: 'rgb(2, 109, 25)',
+        borderWidth: 3,
+        borderBottomWidth: 14,
+        borderRadius: 16,
+        padding: 16
+    },
+    campoGrupo: {
+        marginBottom: 14
+    },
+    labelContainer: {
+        borderBottomWidth: 1,
+        borderBottomColor: "rgba(0,0,0,0.5)",
+        borderStyle: "dotted",
+        paddingBottom: 3,
+        marginBottom: 8
+    },
+    label: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: '#111',
+    },
+    input: {
+        backgroundColor: '#fff',
+        borderRadius: 6,
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+        fontSize: 15,
+        color: '#111',
+        minHeight: 44,
+        elevation: 2
     }
 })
 
