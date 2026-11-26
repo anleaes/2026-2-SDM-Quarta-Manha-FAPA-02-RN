@@ -49,7 +49,7 @@ const EventosScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style= {styles.editButton}
-                    onPress={() => {} /* nagivation.navigate('EditEvento'), {evento: item}*/}
+                    onPress={() => navigation.navigate('EditarEvento', { evento: item})}
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>

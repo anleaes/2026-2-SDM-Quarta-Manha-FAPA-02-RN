@@ -1,7 +1,7 @@
 
 import CriarEventoScreen from '@/screens/evento/CriarEventoScreen';
 import EditarEventoScreen from '@/screens/evento/EditarEventoScreen';
-import EventosScreen from '@/screens/evento/EventosScreen';
+import EventosScreen, { Evento } from '@/screens/evento/EventosScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -11,7 +11,7 @@ export type DrawerParamList = {
     Home: undefined,
     Evento: undefined,
     CriarEvento: undefined,
-    EditarEvento: undefined,
+    EditarEvento: {evento: Evento},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
