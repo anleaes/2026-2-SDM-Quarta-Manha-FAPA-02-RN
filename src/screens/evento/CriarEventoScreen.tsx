@@ -40,6 +40,58 @@ const CriarEventoScreen = ({navigation}: Props) => {
         }
     }
 
+
+    /*
+    
+    Como o Image e File não podem ser enviados normalmente atraves de json.stringfy
+    O ideal é usar o FormData que possui os mesmos parametros de forms do html
+    "multipart/form-data" para imagens e arquivos
+    
+    */
+
+    const handleSave = async() => {
+        setSaving(true)
+
+        try{
+            const formData = new FormData()
+            
+            //alocar nome e descricao    
+            formData.append("nome", nome)
+            formData.append("descricao", descricao)
+
+            //alocar banner
+            if(banner){
+                if(banner.file){
+                    formData.append("banner", banner.file)
+                }else{
+                    formData.append("banner", {
+                        uri: banner.uri,
+                        name: banner.fileName || "banner.jpg",
+                        type: banner.mimeType || "image/jpeg"
+                    } as any)
+                }
+            }
+        
+            //alocar regras
+            if(regras){
+                if(regras.file){
+                    formData.append("regras", regras.file)
+                }else{
+                    formData.append("regras", {
+                        uri: regras.uri,
+                        name: regras.name || "regras.pdf",
+                        type: regras.mimeType || "application/pdf"
+                    } as any)
+                }
+            }
+        
+        }catch(e){
+            console.error("Erro ao enviar formulario: ", e)
+        }finally{
+            setSaving(false)
+        }
+    }
+
     return null
 }
 
