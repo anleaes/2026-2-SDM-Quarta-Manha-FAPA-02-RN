@@ -2,7 +2,9 @@ import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
-import { useState } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
+import { Image, StyleSheet, View } from "react-native";
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriarEvento'>
 
@@ -15,6 +17,15 @@ const CriarEventoScreen = ({navigation}: Props) => {
     const [regras, setRegras] = useState<DocumentPicker.DocumentPickerAsset | null>(null)
     const [saving, setSaving] = useState(false)
 
+
+    useFocusEffect(
+        useCallback(() => {
+            setNome("")
+            setDescricao("")
+            setBanner(null)
+            setRegras(null)
+        }, [])
+    )
 
     //ImageField
     const escolherBanner = async() => {
@@ -99,7 +110,27 @@ const CriarEventoScreen = ({navigation}: Props) => {
         }
     }
 
-    return null
+    return (
+        <View style={styles.container}>
+            <Image
+                source={require('@/assets/images/bg_padrao.jpg')}
+                style={[StyleSheet.absoluteFill, styles.image]}
+                resizeMode='cover'
+            />
+        </View>
+
+    )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f5f5f5'
+    },
+    image: {
+        width: '100%',
+        height: '100%'
+    }
+})
 
 export default CriarEventoScreen
