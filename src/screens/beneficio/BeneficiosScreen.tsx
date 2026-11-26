@@ -107,7 +107,7 @@ const BeneficiosScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => { /*navigation.navigate('CriarBeneficio')*/ }}
+                onPress={() => { navigation.navigate('CriarBeneficio') }}
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>

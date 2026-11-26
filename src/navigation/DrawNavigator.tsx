@@ -7,7 +7,7 @@ import CriarSedeScreen from '@/screens/sede/CriarSedeScreen';
 import EditarSedeScreen from '@/screens/sede/EditarSedeScreen';
 import SedesScreen, { Sede } from '@/screens/sede/SedesScreen';
 
-// import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
+import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 // import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
 
@@ -27,7 +27,7 @@ export type DrawerParamList = {
     EditarSede: {sede: Sede},
 
     Beneficio: undefined,
-    // CriarBeneficio: undefined,
+    CriarBeneficio: undefined,
     // EditarBeneficio: {beneficio: Beneficio},
 }
 
@@ -114,14 +114,14 @@ const DrawerNavigator = () => {
                     title: 'Beneficios',
                 }}
             />
-            {/* <Drawer.Screen
+             <Drawer.Screen
                 name='CriarBeneficio'
                 component={CriarBeneficioScreen}
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Criar Beneficio',
                 }}
-            />
+            />{/*
              <Drawer.Screen
                 name='EditarBeneficio'
                 component={EditarBeneficioScreen}
