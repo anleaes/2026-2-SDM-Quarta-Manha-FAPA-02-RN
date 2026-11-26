@@ -161,6 +161,22 @@ const CriarEventoScreen = ({navigation}: Props) => {
                         )}
                     </View>
                     {/*Regras*/}
+                    <View style={styles.campoGrupo}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Regras(PDF): </Text>
+                        </View>
+
+                        <TouchableOpacity
+                            style={styles.fileButton}
+                            onPress={escolherRegras}
+                        >
+                            <Text style={styles.fileButtonText}>{regras ? "Trocar Regras" : "Escolher Regras"}</Text>
+                        </TouchableOpacity>
+                        {regras && (
+                            <Text style={styles.fileName}>Arquivo: {regras.name}</Text>
+                        )}
+                    </View>
+
                     {/*Descricao*/}
 
                 </View>
@@ -258,6 +274,12 @@ const styles = StyleSheet.create({
         color: 'rgb(2, 109, 25)',
         fontWeight: 'bold',
         fontSize: 14
+    },
+    fileName: {
+        marginTop: 6,
+        fontSize: 13,
+        color: '#222',
+        fontStyle: 'italic'
     },
     preview: {
         width: '100%',
