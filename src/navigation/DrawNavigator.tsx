@@ -14,6 +14,7 @@ import CustomDrawerContent from '../components/CustomDrawerContent';
 
 export type DrawerParamList = {
     Home: undefined,
+
     Evento: undefined,
     CriarEvento: undefined,
     EditarEvento: {evento: Evento},
@@ -21,6 +22,8 @@ export type DrawerParamList = {
     Sede: undefined,
     CriarSede: undefined,
     EditarSede: {sede: Sede},
+
+    Cupom: undefined,
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
