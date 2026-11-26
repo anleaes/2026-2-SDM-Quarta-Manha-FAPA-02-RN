@@ -178,6 +178,21 @@ const CriarEventoScreen = ({navigation}: Props) => {
                     </View>
 
                     {/*Descricao*/}
+                    <View style={styles.campoGrupo}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Descrição: </Text>
+                        </View>
+                        <TextInput
+                            value={descricao}
+                            onChangeText={setDescricao}
+                            style={[styles.input, styles.textArea]}
+                            multiline
+                            textAlignVertical="top"
+                            placeholder="Descreva o evento"
+                            placeholderTextColor='#777'
+                        />
+
+                    </View>
 
                 </View>
 
@@ -259,6 +274,9 @@ const styles = StyleSheet.create({
         color: '#111',
         minHeight: 44,
         elevation: 2
+    },
+    textArea: {
+        minHeight: 100
     },
     fileButton:{
         backgroundColor: '#fff',
