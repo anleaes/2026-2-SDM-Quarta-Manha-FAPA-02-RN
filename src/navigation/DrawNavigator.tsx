@@ -3,7 +3,8 @@ import CriarEventoScreen from '@/screens/evento/CriarEventoScreen';
 import EditarEventoScreen from '@/screens/evento/EditarEventoScreen';
 import EventosScreen, { Evento } from '@/screens/evento/EventosScreen';
 
-import CriarSedeScreen from  '@/screens/sede/CriarSedeScreen';
+import CriarSedeScreen from '@/screens/sede/CriarSedeScreen';
+import EditarSedeScreen from '@/screens/sede/EditarSedeScreen';
 import SedesScreen, { Sede } from '@/screens/sede/SedesScreen';
 
 import HomeScreen from '@/screens/Homescreen';
@@ -19,6 +20,7 @@ export type DrawerParamList = {
 
     Sede: undefined,
     CriarSede: undefined,
+    EditarSede: {sede: Sede}
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -85,6 +87,14 @@ const DrawerNavigator = () => {
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Criar Sede',
+                }}
+            />
+             <Drawer.Screen
+                name='EditarSede'
+                component={EditarSedeScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Sede',
                 }}
             />
 

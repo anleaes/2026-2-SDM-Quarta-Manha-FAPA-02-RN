@@ -47,7 +47,7 @@ const SedesScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style= {styles.editButton}
-                    onPress={() => {}/*navigation.navigate('EditarSede', { evento: item})*/}
+                    onPress={() => navigation.navigate('EditarSede', { sede: item})}
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>
