@@ -4,7 +4,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriarEvento'>
 
@@ -142,6 +142,24 @@ const CriarEventoScreen = ({navigation}: Props) => {
                         />
                     </View>
                     {/*Banner*/}
+                    <View style={styles.campoGrupo}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Banner(Imagem): </Text>
+                        </View>
+                        <TouchableOpacity
+                            style={styles.fileButton}
+                            onPress={escolherBanner}
+                        >
+                            <Text style={styles.fileButtonText}>{banner ? "Trocar Banner" : "Escolher Imagem"}</Text>
+                        </TouchableOpacity>
+                        {banner && (
+                            <Image
+                                source={{uri: banner.uri}}
+                                style={styles.preview}
+                                resizeMode="cover"
+                            />
+                        )}
+                    </View>
                     {/*Regras*/}
                     {/*Descricao*/}
 
@@ -225,6 +243,29 @@ const styles = StyleSheet.create({
         color: '#111',
         minHeight: 44,
         elevation: 2
+    },
+    fileButton:{
+        backgroundColor: '#fff',
+        borderRadius: 6,
+        paddingHorizontal: 12,
+        paddingVertical: 10,
+        fontSize: 15,
+        color: '#111',
+        minHeight: 44,
+        elevation: 2
+    },
+    fileButtonText: {
+        color: 'rgb(2, 109, 25)',
+        fontWeight: 'bold',
+        fontSize: 14
+    },
+    preview: {
+        width: '100%',
+        height: 150,
+        borderRadius: 8,
+        marginTop: 10,
+        borderWidth: 2,
+        borderColor: 'rgb(2, 109, 25)'
     }
 })
 
