@@ -51,16 +51,16 @@ const DrawerNavigator = () => {
                 name='CriarEvento'
                 component={CriarEventoScreen}
                 options={{
-                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
-                    title: 'Criar Eventos',
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Evento',
                 }}
             />
             <Drawer.Screen
                 name='EditarEvento'
                 component={EditarEventoScreen}
                 options={{
-                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
-                    title: 'Editar Eventos',
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Evento',
                 }}
             />
 
