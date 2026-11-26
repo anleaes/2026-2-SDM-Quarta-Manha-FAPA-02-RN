@@ -93,7 +93,7 @@ const BeneficiosScreen = ({navigation}: Props) => {
                 resizeMode="cover"
             /> */}
 
-            <Text style={styles.titulo}>Beneficios</Text>
+            <Text style={styles.titulo}>Benefícios</Text>
             {carregamento ? (
                 <ActivityIndicator size="large" color='rgb(137, 87, 202)'/>
             ) : (
