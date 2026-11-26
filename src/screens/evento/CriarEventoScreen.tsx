@@ -4,7 +4,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriarEvento'>
 
@@ -117,6 +117,12 @@ const CriarEventoScreen = ({navigation}: Props) => {
                 style={[StyleSheet.absoluteFill, styles.image]}
                 resizeMode='cover'
             />
+
+            <ScrollView contentContainerStyle={styles.scrollContent}>
+                <View style={styles.tituloBox}>
+                    <Text style={styles.titulo}>CRIAR EVENTO</Text>
+                </View>
+            </ScrollView>
         </View>
 
     )
@@ -130,6 +136,34 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%'
+    },
+    scrollContent: {
+        flexGrow: 1,
+        paddingHorizontal: 16,
+        paddingTop: 20,
+        paddingBottom: 40,
+        alignItems: 'center'
+    },
+    tituloBox: {
+        backgroundColor: 'white',
+        borderColor: 'rgb(2, 109, 25)',
+        borderWidth: 5,
+        borderTopWidth: 10,
+        borderBottomWidth: 0,
+        borderTopLeftRadius: 14,
+        borderTopRightRadius: 14,
+        paddingVertical: 10,
+        paddingHorizontal: 24,
+        zIndex: 1
+    },
+    titulo: {
+        fontSize: 28,
+        fontWeight: '900',
+        color: '#111',
+        textAlign: 'center',
+        textShadowColor: 'rgb(117,116,116)',
+        textShadowOffset: { width: 0, height: 3},
+        textShadowRadius: 1
     }
 })
 
