@@ -4,7 +4,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 type Props = DrawerScreenProps<DrawerParamList, 'CriarEvento'>
 
@@ -194,6 +194,28 @@ const CriarEventoScreen = ({navigation}: Props) => {
 
                     </View>
 
+                    {/*Botão para envio*/}
+                    <View style={styles.acoesContainer}>
+                        {saving ? (
+                            <ActivityIndicator size='large' color='rgb(2, 109, 25)'/>
+                        ) : (
+                            <TouchableOpacity
+                                style={styles.submitButton}
+                                activeOpacity={0.75}
+                                onPress={handleSave}
+                            >
+                                <Text style={styles.submitButtonText}>SALVAR</Text>
+                            </TouchableOpacity>
+                        )}
+                        <TouchableOpacity
+                            style={styles.voltarButton}
+                            activeOpacity={0.75}
+                            onPress={() => navigation.navigate("Evento")}
+                        >
+                            <Text>VOLTAR</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 </View>
 
             </ScrollView>
@@ -306,6 +328,32 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderWidth: 2,
         borderColor: 'rgb(2, 109, 25)'
+    },
+    acoesContainer: {
+        marginTop: 12,
+        alignItems: 'center',
+        gap: 10
+    },
+    submitButton: {
+        width: 200,
+        height: 50,
+        backgroundColor: '#868f9f',
+        borderColor: '42474e',
+        borderWidth: 3,
+        borderBottomWidth: 6,
+        borderRadius: 16,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    submitButtonText: {
+        color: '#111',
+        fontWeight: '900',
+        fontSize: 16,
+        letterSpacing: 1
+    },
+    voltarButton: {
+        paddingVertical: 8,
+        paddingHorizontal: 20
     }
 })
 
