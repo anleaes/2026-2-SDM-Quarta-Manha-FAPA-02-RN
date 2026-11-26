@@ -50,6 +50,54 @@ const CriarCupomScreen = ({navigation}: Props) => {
         )
     }
 
+
+    const handleSave = async() => {
+        const valorPorcentagem = parseInt(porcentagemDesconto, 10) // base 10
+
+        if(isNaN(valorPorcentagem) || valorPorcentagem < 1 || valorPorcentagem > 100){
+            setErro('A porcentagem de desconto deve ser no minimo 1 até 100.')
+            return
+        }
+
+        if(!dataVencimento.trim()){
+            setErro('Informe a data de vencimento (AAAA-MM-DD).')
+            return
+        }
+
+        if(eventosSelecionados.length === 0){
+            setErro('Selecione pelo menos um evento válido.')
+            return
+        }
+
+        setErro('')
+        setSaving(true)
+
+        try{
+            const res = await fetch('http:localhost:8000/cupom/', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    porcentagem_desconto: valorPorcentagem,
+                    data_vencimento: dataVencimento,
+                    eventos_validos: eventosSelecionados
+                })
+            })
+
+            if(!res.ok){
+                setErro('Erro ao salvar cupom. Verifique a data e os campos.')
+                return
+            }
+
+            navigation.navigate("Cupom")
+        }catch(e){
+            setErro('Não foi possivel conectar a API.')
+        }finally {
+            setSaving(false)
+        }
+    }
+
     return null
 }
 
