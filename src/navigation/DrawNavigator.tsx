@@ -1,5 +1,5 @@
 
-import CriarEventoScreen from '@/screens/evento/CreateEventoScreen';
+import CriarEventoScreen from '@/screens/evento/CriarEventoScreen';
 import EventosScreen from '@/screens/evento/EventosScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
