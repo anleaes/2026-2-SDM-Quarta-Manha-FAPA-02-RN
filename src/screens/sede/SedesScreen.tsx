@@ -118,7 +118,7 @@ const SedesScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => { /* navigation.navigate('CriarSede') */ }}
+                onPress={() => { navigation.navigate('CriarSede') }}
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>
