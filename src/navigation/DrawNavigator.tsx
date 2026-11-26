@@ -7,6 +7,10 @@ import CriarSedeScreen from '@/screens/sede/CriarSedeScreen';
 import EditarSedeScreen from '@/screens/sede/EditarSedeScreen';
 import SedesScreen, { Sede } from '@/screens/sede/SedesScreen';
 
+// import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
+// import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
+import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
+
 import HomeScreen from '@/screens/Homescreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -21,6 +25,10 @@ export type DrawerParamList = {
     Sede: undefined,
     CriarSede: undefined,
     EditarSede: {sede: Sede},
+
+    Beneficio: undefined,
+    // CriarBeneficio: undefined,
+    // EditarBeneficio: {beneficio: Beneficio},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -97,6 +105,31 @@ const DrawerNavigator = () => {
                     title: 'Editar Sede',
                 }}
             />
+
+            <Drawer.Screen
+                name='Beneficio'
+                component={BeneficiosScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Beneficios',
+                }}
+            />
+            {/* <Drawer.Screen
+                name='CriarBeneficio'
+                component={CriarBeneficioScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Beneficio',
+                }}
+            />
+             <Drawer.Screen
+                name='EditarBeneficio'
+                component={EditarBeneficioScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Beneficio',
+                }}
+            /> */}
 
 
         </Drawer.Navigator>
