@@ -21,6 +21,11 @@ const HomeScreen = ({navigation} : Props) => {
                 {NOME_APPS.map((apps) => (
                     <Pressable
                         key={apps.id}
+                        onPress={() => {
+                            if(apps.route){
+                                navigation.navigate(apps.route)
+                            }
+                        }}
                         style={({ pressed, hovered}: any) => [
                             styles.entidadeBotao,
                             {borderLeftColor: apps.color},

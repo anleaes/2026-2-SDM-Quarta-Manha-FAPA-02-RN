@@ -1,5 +1,7 @@
 
-import EventosScreen from '@/screens/evento/EventosScreen';
+import CriarEventoScreen from '@/screens/evento/CriarEventoScreen';
+import EditarEventoScreen from '@/screens/evento/EditarEventoScreen';
+import EventosScreen, { Evento } from '@/screens/evento/EventosScreen';
 import SedesScreen from '@/screens/sede/SedesScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
@@ -9,6 +11,8 @@ import CustomDrawerContent from '../components/CustomDrawerContent';
 export type DrawerParamList = {
     Home: undefined,
     Evento: undefined,
+    CriarEvento: undefined,
+    EditarEvento: {evento: Evento},
     Sede: undefined,
 }
 
@@ -45,6 +49,23 @@ const DrawerNavigator = () => {
                     title: 'Eventos',
                 }}
             />
+            
+            <Drawer.Screen
+                name='CriarEvento'
+                component={CriarEventoScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Evento',
+                }}
+            />
+            <Drawer.Screen
+                name='EditarEvento'
+                component={EditarEventoScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Evento',
+                }}
+            />
             <Drawer.Screen
                 name='Sede'
                 component={SedesScreen}
@@ -53,7 +74,6 @@ const DrawerNavigator = () => {
                     title: 'Sedes',
                 }}
             />
-            
 
 
         </Drawer.Navigator>
