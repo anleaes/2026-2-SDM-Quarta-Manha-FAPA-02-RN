@@ -11,7 +11,7 @@ type AppItems = {
 }
 
 export const NOME_APPS: AppItems[] = [
-    {id: 'sede', label: 'Sedes', color: 'rgb(133, 248, 110)'},
+    {id: 'sede', label: 'Sedes', color: 'rgb(133, 248, 110)', route: 'Sede'},
     {id: 'funcionario', label: 'Funcionarios', color: 'rgb(103, 236, 185)'},
     {id: 'espectador', label: 'Espectadores', color: 'rgb(221, 169, 58)'},
     {id: 'beneficio', label: 'Beneficios', color: 'rgb(137, 87, 202)'},
