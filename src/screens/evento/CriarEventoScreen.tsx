@@ -29,7 +29,16 @@ const CriarEventoScreen = ({navigation}: Props) => {
         }
     }
     //FileField
+    const escolherRegras = async() => {
+        //pega documento explicitamente pdf
+        const result = await DocumentPicker.getDocumentAsync({
+            type: 'application/pdf'
+        })
 
+        if(!result.canceled) {
+            setRegras(result.assets[0])
+        }
+    }
 
     return null
 }
