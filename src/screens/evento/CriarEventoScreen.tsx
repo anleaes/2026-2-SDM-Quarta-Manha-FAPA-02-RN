@@ -15,6 +15,22 @@ const CriarEventoScreen = ({navigation}: Props) => {
     const [regras, setRegras] = useState<DocumentPicker.DocumentPickerAsset | null>(null)
     const [saving, setSaving] = useState(false)
 
+
+    //ImageField
+    const escolherBanner = async() => {
+        //pega a imagem do mobile (precisa de permissão)
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ['images'],
+            allowsEditing: true,
+            quality: 0.8
+        })
+        if(!result.canceled){
+            setBanner(result.assets[0])
+        }
+    }
+    //FileField
+
+
     return null
 }
 
