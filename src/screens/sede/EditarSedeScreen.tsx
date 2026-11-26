@@ -3,12 +3,19 @@ import { DrawerScreenProps } from "@react-navigation/drawer";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Picker } from '@expo/ui';
 
 type Props = DrawerScreenProps<DrawerParamList, 'EditarSede'>
 
 
 //COR PADRAO DO APP
 const COR_ENTIDADE = 'rgb(133, 248, 110)'
+
+const SEDE_STATUS = [
+        { label: 'Em Funcionamento', value: 'F' },
+        { label: 'Desativado', value: 'X' },
+        { label: 'Em Reforma', value: 'R' },
+    ];
 
 const EditarSedeScreen = ({route, navigation}: Props) => {
 
@@ -131,18 +138,13 @@ const EditarSedeScreen = ({route, navigation}: Props) => {
                     </View>
 
                     {/*Status*/}
-                    {/* TODO: converter para lista de opções */}
                     <View style={styles.campoGrupo}>
-                        <View style={styles.labelContainer}>
-                            <Text style={styles.label}>Status:</Text>
-                        </View>
-                        <TextInput
-                            value={status}
-                            onChangeText={setStatus}
-                            style={styles.input}
-                            placeholder="Status"
-                            placeholderTextColor="#777"
-                        />
+                        <Text> Status: </Text>
+                        <Picker selectedValue={status} onValueChange={setStatus}>
+                            {SEDE_STATUS.map(s => (
+                                <Picker.Item key={s.value} label={s.label} value={s.value} />
+                            ))}
+                        </Picker>
                     </View>
 
                     {/*Botão para envio*/}

@@ -20,7 +20,7 @@ export type DrawerParamList = {
 
     Sede: undefined,
     CriarSede: undefined,
-    EditarSede: {sede: Sede}
+    EditarSede: {sede: Sede},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
