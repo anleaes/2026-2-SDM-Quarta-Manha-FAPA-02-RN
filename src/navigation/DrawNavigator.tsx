@@ -7,6 +7,7 @@ import CriarSedeScreen from '@/screens/sede/CriarSedeScreen';
 import EditarSedeScreen from '@/screens/sede/EditarSedeScreen';
 import SedesScreen, { Sede } from '@/screens/sede/SedesScreen';
 
+import CriarCupomScreen from '@/screens/cupom/CriarCupomScreen';
 import HomeScreen from '@/screens/Homescreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -24,6 +25,7 @@ export type DrawerParamList = {
     EditarSede: {sede: Sede},
 
     Cupom: undefined,
+    CriarCupom: undefined,
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -92,12 +94,21 @@ const DrawerNavigator = () => {
                     title: 'Criar Sede',
                 }}
             />
-             <Drawer.Screen
+            <Drawer.Screen
                 name='EditarSede'
                 component={EditarSedeScreen}
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Editar Sede',
+                }}
+            />
+
+            <Drawer.Screen
+                name='CriarCupom'
+                component={CriarCupomScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Criar Cupom',
                 }}
             />
 
