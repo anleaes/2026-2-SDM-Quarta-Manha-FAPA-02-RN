@@ -163,7 +163,7 @@ const FuncionariosScreen = ({navigation}: Props) => {
 
             <Text style={styles.titulo}>Funcionarios</Text>
             {carregamento ? (
-                <ActivityIndicator size="large" color='rgb(221, 169, 58)'/>
+                <ActivityIndicator size="large" color='rgb(103, 236, 185)'/>
             ) : (
                 <FlatList
                     data={funcionario}
@@ -175,7 +175,7 @@ const FuncionariosScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => { /*navigation.navigate('CriarFuncionario')*/ }}
+                onPress={() => { navigation.navigate('CriarFuncionario') }}
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>

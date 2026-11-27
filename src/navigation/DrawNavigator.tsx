@@ -19,7 +19,7 @@ import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
 import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
 import EspectadoresScreen, { Espectador } from '@/screens/espectador/EspectadoresScreen';
 
-// import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen';
+import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen';
 // import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScreen';
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
@@ -52,7 +52,7 @@ export type DrawerParamList = {
     EditarEspectador: {espectador: Espectador},
 
     Funcionario: undefined,
-    // CriarFuncionario: undefined,
+    CriarFuncionario: undefined,
     // EditarFuncionario: {funcionario: Funcionario},
 }
 
@@ -215,14 +215,14 @@ const DrawerNavigator = () => {
                     title: 'Funcionario',
                 }}
             />
-            {/* <Drawer.Screen
+            <Drawer.Screen
                 name='CriarFuncionario'
                 component={CriarFuncionarioScreen}
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Criar Funcionario',
                 }}
-            />
+            />{/* 
             <Drawer.Screen
                 name='EditarFuncionario'
                 component={EditarFuncionarioScreen}
