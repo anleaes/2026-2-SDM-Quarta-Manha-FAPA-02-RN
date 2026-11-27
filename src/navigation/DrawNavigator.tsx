@@ -17,11 +17,12 @@ import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 
 
 import CriarDivulgacaoEvento from '@/screens/divulgacao_evento/CriarDivulgacaoEventosScreen';
-import DivulgacaoEventoScreen from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
+import DivulgacaoEventoScreen, { DivulgacaoEvento } from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
 import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
 import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
 import EspectadoresScreen, { Espectador } from '@/screens/espectador/EspectadoresScreen';
 
+import EditarDivulgacaoEventoScreen from '@/screens/divulgacao_evento/EditarDivulgacaoEventosScreen';
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -48,6 +49,8 @@ export type DrawerParamList = {
 
     DivulgacaoEvento: undefined,
     CriarDivulgacaoEvento: undefined,
+    EditarDivulgacaoEvento: {divulgacao_evento: DivulgacaoEvento}
+
     Espectador: undefined,
     CriarEspectador: undefined,
     EditarEspectador: {espectador: Espectador},
@@ -191,6 +194,14 @@ const DrawerNavigator = () => {
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Criar Divulgação de Eventos',
+                }}
+            />
+            <Drawer.Screen         
+                name='EditarDivulgacaoEvento'
+                component={EditarDivulgacaoEventoScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Divulgação de Eventos',
                 }}
             />
 
