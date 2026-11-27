@@ -19,6 +19,10 @@ import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
 import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
 import EspectadoresScreen, { Espectador } from '@/screens/espectador/EspectadoresScreen';
 
+import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen';
+import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScreen';
+import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
+
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -46,6 +50,10 @@ export type DrawerParamList = {
     Espectador: undefined,
     CriarEspectador: undefined,
     EditarEspectador: {espectador: Espectador},
+
+    Funcionario: undefined,
+    CriarFuncionario: undefined,
+    EditarFuncionario: {funcionario: Funcionario},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -198,6 +206,31 @@ const DrawerNavigator = () => {
                 }}
             />
 
+
+            <Drawer.Screen         
+                name='Funcionario'
+                component={FuncionariosScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Funcionario',
+                }}
+            />
+            <Drawer.Screen
+                name='CriarFuncionario'
+                component={CriarFuncionarioScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Funcionario',
+                }}
+            /> 
+            <Drawer.Screen
+                name='EditarFuncionario'
+                component={EditarFuncionarioScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Funcionario',
+                }}
+            />
 
         </Drawer.Navigator>
     )
