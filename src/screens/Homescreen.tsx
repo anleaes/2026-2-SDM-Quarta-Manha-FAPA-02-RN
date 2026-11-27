@@ -9,36 +9,40 @@ type Props = DrawerScreenProps<DrawerParamList, 'Home'>
 const HomeScreen = ({navigation} : Props) => {
     return (
         <View style={styles.container}>
-            {/*Grid do banner*/}
-            <View style={styles.apresentacao}>
-                <Image source={require('@/assets/images/ticket.png')}/>
-                <Text style={styles.titulo}>TEMPLATE</Text>
-                <Text style={styles.descricao}>VOCÊ FAZ ISSO FUNCIONAR</Text>
-            </View>
-            {/*Grid dos botoes*/}
-            <ScrollView contentContainerStyle={styles.gridBotoes}>
-                {/*Iteracao para montar os botoes*/}
-                {NOME_APPS.map((apps) => (
-                    <Pressable
-                        key={apps.id}
-                        style={({ pressed, hovered}: any) => [
-                            styles.entidadeBotao,
-                            {borderLeftColor: apps.color},
-                            (pressed || hovered) && {
-                                backgroundColor: apps.color,
-                                paddingLeft: 18
-                            }
-                        ]}
-                    >
-                        {({ pressed, hovered}: any) => (
-                            <Text
-                                style={[styles.entidadeTexto, (pressed || hovered) && {color: 'black'}]}
-                            >{apps.label}</Text>
-                        )}
-                    </Pressable>
-                ))}
+            <ScrollView contentContainerStyle={styles.scrollContent}>
+                {/*Grid do banner*/}
+                <View style={styles.apresentacao}>
+                    <Image style={styles.logo} resizeMode="contain" source={require('@/assets/images/ticket.png')}/>
+                    <Text style={styles.titulo}>TEMPLATE</Text>
+                    <Text style={styles.descricao}>VOCÊ FAZ ISSO FUNCIONAR</Text>
+                </View>
+                {/*Grid dos botoes*/}
+                <View style={styles.gridBotoes}>
+                    {/*Iteracao para montar os botoes*/}
+                    {NOME_APPS.map((apps) => (
+                        <Pressable
+                            key={apps.id}
+                            style={({ pressed, hovered}: any) => [
+                                styles.entidadeBotao,
+                                {borderLeftColor: apps.color},
+                                (pressed || hovered) && {
+                                    backgroundColor: apps.color,
+                                    paddingLeft: 18
+                                }
+                            ]}
+                        >
+                            {({ pressed, hovered}: any) => (
+                                <Text
+                                    style={[styles.entidadeTexto, 
+                                    (pressed || hovered) && {color: 'black'}]}
+                                >
+                                    {apps.label}
+                                </Text>
+                            )}
+                        </Pressable>
+                    ))}
+                </View>
             </ScrollView>
-            
         </View>
     )
 }
@@ -52,10 +56,19 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.7)',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 25,
+        paddingVertical: 16,
         paddingHorizontal: 16,
         borderBottomWidth: 1,
         borderBottomColor: 'black'
+    },
+    scrollContent: {
+        flexGrow: 1,
+        paddingBottom: 24
+    },
+    logo: {
+        width: 90,
+        height: 90,
+        marginBottom: 8
     },
     titulo: {
         fontSize: 32,
