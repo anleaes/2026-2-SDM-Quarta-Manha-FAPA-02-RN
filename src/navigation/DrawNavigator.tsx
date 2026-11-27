@@ -7,6 +7,10 @@ import CriarSedeScreen from '@/screens/sede/CriarSedeScreen';
 import EditarSedeScreen from '@/screens/sede/EditarSedeScreen';
 import SedesScreen, { Sede } from '@/screens/sede/SedesScreen';
 
+import CriarCupomScreen from '@/screens/cupom/CriarCupomScreen';
+import CuponsScreen, { Cupom } from '@/screens/cupom/CuponsScreen';
+import EditarCupomScreen from '@/screens/cupom/EditarCupomScreen';
+
 import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
@@ -18,6 +22,7 @@ import CustomDrawerContent from '../components/CustomDrawerContent';
 
 export type DrawerParamList = {
     Home: undefined,
+
     Evento: undefined,
     CriarEvento: undefined,
     EditarEvento: {evento: Evento},
@@ -26,6 +31,10 @@ export type DrawerParamList = {
     CriarSede: undefined,
     EditarSede: {sede: Sede},
 
+    Cupom: undefined,
+    CriarCupom: undefined,
+    EditarCupom: {cupom: Cupom}
+  
     Beneficio: undefined,
     CriarBeneficio: undefined,
     EditarBeneficio: {beneficio: Beneficio},
@@ -97,7 +106,7 @@ const DrawerNavigator = () => {
                     title: 'Criar Sede',
                 }}
             />
-             <Drawer.Screen
+            <Drawer.Screen
                 name='EditarSede'
                 component={EditarSedeScreen}
                 options={{
@@ -107,6 +116,31 @@ const DrawerNavigator = () => {
             />
 
             <Drawer.Screen
+                name='Cupom'
+                component={CuponsScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Cupons',
+                }}
+            />
+            <Drawer.Screen
+                name='CriarCupom'
+                component={CriarCupomScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Cupom',
+                }}
+            />
+            <Drawer.Screen
+                name='EditarCupom'
+                component={EditarCupomScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Cupom',
+                }}
+            />
+        
+            <Drawer.Screen         
                 name='Beneficio'
                 component={BeneficiosScreen}
                 options={{
