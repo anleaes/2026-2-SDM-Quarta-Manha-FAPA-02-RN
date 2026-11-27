@@ -9,6 +9,11 @@ type Props = DrawerScreenProps<DrawerParamList, 'Home'>
 const HomeScreen = ({navigation} : Props) => {
     return (
         <View style={styles.container}>
+            <Image
+                source={require('@/assets/images/bg_padrao.jpg')}
+                style={[StyleSheet.absoluteFill, styles.bgImage]}
+                resizeMode="cover"
+            />
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 {/*Grid do banner*/}
                 <View style={styles.apresentacao}>
@@ -57,8 +62,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white'
     },
+    bgImage: {
+        width: '100%',
+        height: '100%'
+    },
     apresentacao: {
-        backgroundColor: 'rgba(255,255,255,0.7)',
+        backgroundColor: 'rgba(255,255,255,0.1)',
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 16,
@@ -104,7 +113,9 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         borderLeftWidth: 5,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderColor: 'black',
+        borderWidth: 1
     },
     entidadeTexto: {
         fontSize: 16,
