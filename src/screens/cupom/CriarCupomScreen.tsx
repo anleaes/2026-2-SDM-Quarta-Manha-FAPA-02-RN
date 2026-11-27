@@ -75,7 +75,7 @@ const CriarCupomScreen = ({navigation}: Props) => {
         setSaving(true)
 
         try{
-            const res = await fetch('http:localhost:8000/cupom/', {
+            const res = await fetch('http://localhost:8000/cupom/', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

@@ -35,7 +35,7 @@ const CuponsScreen = ({navigation}: Props) => {
         ])
         const dataCupom = await resCupons.json()
         const dataEvento = await resEventos.json()
-        setEventos(dataCupom)
+        setCupons(dataCupom)
         setEventos(dataEvento)
         setCarregamento(false)
     }
