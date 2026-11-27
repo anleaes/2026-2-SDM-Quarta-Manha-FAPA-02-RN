@@ -67,7 +67,7 @@ const CuponsScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style={styles.editButton}
-                    onPress={() => {} /* navigation.navigate("EditarCupom", {cupom: item})*/}
+                    onPress={() =>  navigation.navigate("EditarCupom", {cupom: item})}
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>
