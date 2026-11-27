@@ -11,11 +11,12 @@ import CriarCupomScreen from '@/screens/cupom/CriarCupomScreen';
 import CuponsScreen, { Cupom } from '@/screens/cupom/CuponsScreen';
 import EditarCupomScreen from '@/screens/cupom/EditarCupomScreen';
 
+import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
 import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
-import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
 
 import HomeScreen from '@/screens/Homescreen';
+import DivulgacaoEventoScreen from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
@@ -38,6 +39,8 @@ export type DrawerParamList = {
     Beneficio: undefined,
     CriarBeneficio: undefined,
     EditarBeneficio: {beneficio: Beneficio},
+
+    DivulgacaoEvento: undefined,
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -164,7 +167,14 @@ const DrawerNavigator = () => {
                     title: 'Editar Beneficio',
                 }}
             />
-
+            <Drawer.Screen         
+                name='DivulgacaoEvento'
+                component={DivulgacaoEventoScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Divulgação de Eventos',
+                }}
+            />
 
         </Drawer.Navigator>
     )
