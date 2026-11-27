@@ -70,7 +70,7 @@ const FuncionariosScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style= {styles.editButton}
-                    onPress={ () => {} /*navigation.navigate('EditarFuncionario', { funcionario: item})*/ }
+                    onPress={ () => navigation.navigate('EditarFuncionario', { funcionario: item}) }
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>
