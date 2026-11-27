@@ -15,6 +15,10 @@ import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
 
+// import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
+// import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
+import EspectadoresScreen, { Espectador } from '@/screens/espectador/EspectadoresScreen';
+
 import HomeScreen from '@/screens/Homescreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -33,11 +37,15 @@ export type DrawerParamList = {
 
     Cupom: undefined,
     CriarCupom: undefined,
-    EditarCupom: {cupom: Cupom}
+    EditarCupom: {cupom: Cupom},
   
     Beneficio: undefined,
     CriarBeneficio: undefined,
     EditarBeneficio: {beneficio: Beneficio},
+
+    Espectador: undefined,
+    // CriarEspectador: undefined,
+    // EditarEspectador: {beneficio: Beneficio},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -164,6 +172,32 @@ const DrawerNavigator = () => {
                     title: 'Editar Beneficio',
                 }}
             />
+
+            <Drawer.Screen         
+                name='Espectador'
+                component={EspectadoresScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Espectador',
+                }}
+            />
+            
+             {/* <Drawer.Screen
+                name='CriarEspectador'
+                component={CriarEspectadorScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Espectador',
+                }}
+            />
+             <Drawer.Screen
+                name='EditarEspectador'
+                component={EditarEspectadorScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Espectador',
+                }}
+            /> */}
 
 
         </Drawer.Navigator>
