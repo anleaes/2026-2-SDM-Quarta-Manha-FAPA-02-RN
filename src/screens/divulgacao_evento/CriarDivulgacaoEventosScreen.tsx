@@ -1,6 +1,7 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import { useState } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
 import { Evento } from "../evento/EventosScreen";
 import { Sede } from "../sede/SedesScreen";
 
@@ -39,6 +40,19 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
             setErro('Não foi possivel carregar as foreigns datas.')
         }
     }
+
+    useFocusEffect(
+        useCallback(() => {
+            setEvento([])
+            setSede([])
+            setData('')
+            setHorarioComeco('')
+            setHorarioFim('')
+            setPrecoBase('')
+            setErro('')
+            fetchForeigns()
+        }, [])
+    )
 
     return null
 }
