@@ -10,6 +10,11 @@ import SedesScreen, { Sede } from '@/screens/sede/SedesScreen';
 import CriarCupomScreen from '@/screens/cupom/CriarCupomScreen';
 import CuponsScreen, { Cupom } from '@/screens/cupom/CuponsScreen';
 import EditarCupomScreen from '@/screens/cupom/EditarCupomScreen';
+
+import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
+import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
+import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
+
 import HomeScreen from '@/screens/Homescreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -29,6 +34,10 @@ export type DrawerParamList = {
     Cupom: undefined,
     CriarCupom: undefined,
     EditarCupom: {cupom: Cupom}
+  
+    Beneficio: undefined,
+    CriarBeneficio: undefined,
+    EditarBeneficio: {beneficio: Beneficio},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -128,6 +137,31 @@ const DrawerNavigator = () => {
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Editar Cupom',
+                }}
+            />
+        
+            <Drawer.Screen         
+                name='Beneficio'
+                component={BeneficiosScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Beneficios',
+                }}
+            />
+             <Drawer.Screen
+                name='CriarBeneficio'
+                component={CriarBeneficioScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Beneficio',
+                }}
+            />
+             <Drawer.Screen
+                name='EditarBeneficio'
+                component={EditarBeneficioScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Beneficio',
                 }}
             />
 
