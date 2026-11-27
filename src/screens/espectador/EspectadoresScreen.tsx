@@ -13,7 +13,7 @@ export type Espectador = {
     id: number;
 
     nome: string;
-    data_nascimento: string;
+    data_nascimento: string; 
     telefone: string;
     email: string;
     genero: string;
@@ -157,7 +157,7 @@ const EspectadoresScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => {} /* { navigation.navigate('CriarEspectador') }*/}
+                onPress={() => { navigation.navigate('CriarEspectador') }}
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>
