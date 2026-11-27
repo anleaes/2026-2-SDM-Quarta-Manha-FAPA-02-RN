@@ -16,6 +16,7 @@ import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 
 import HomeScreen from '@/screens/Homescreen';
+import CriarDivulgacaoEvento from '@/screens/divulgacao_evento/CriarDivulgacaoEventosScreen';
 import DivulgacaoEventoScreen from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -41,6 +42,7 @@ export type DrawerParamList = {
     EditarBeneficio: {beneficio: Beneficio},
 
     DivulgacaoEvento: undefined,
+    CriarDivulgacaoEvento: undefined,
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -173,6 +175,14 @@ const DrawerNavigator = () => {
                 options={{
                     drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
                     title: 'Divulgação de Eventos',
+                }}
+            />
+            <Drawer.Screen         
+                name='CriarDivulgacaoEvento'
+                component={CriarDivulgacaoEvento}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Divulgação de Eventos',
                 }}
             />
 

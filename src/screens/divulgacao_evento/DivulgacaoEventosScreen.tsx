@@ -1,8 +1,9 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
+import Ionicons from "@react-native-vector-icons/ionicons";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Evento } from "../evento/EventosScreen";
 
 
@@ -13,9 +14,9 @@ export type DivulgacaoEvento = {
     evento: number,
     local: number,
     data: string,
-    horarioComeco: string,
-    horarioFim: string,
-    precoBase: string
+    horario_comeco: string,
+    horario_fim: string,
+    preco_base: string
 }
 
 const COR_CUPOM = 'rgb(145, 145, 145)'
@@ -92,51 +93,78 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
 
             {/*ID*/}
             <Text style={styles.campoTexto}>
-                <Text style={styles.label}> ID:</Text>
+                <Text style={styles.label}> ID: </Text>
                 {item.id}
             </Text>
 
             {/*Evento*/}
             <Text style={styles.campoTexto}>
-                <Text style={styles.label}> Evento:</Text>
+                <Text style={styles.label}> Evento: </Text>
                 {getNomeEvento(item.evento)}
             </Text>
 
             {/*Local*/}
             <Text style={styles.campoTexto}>
-                <Text style={styles.label}> Data de Vencimento:</Text>
+                <Text style={styles.label}> Local: </Text>
                 {item.local}
             </Text>
 
-
             {/*Data*/} 
             <Text style={styles.campoTexto}>
-                <Text style={styles.label}> Data de Vencimento:</Text>
+                <Text style={styles.label}> Data de Vencimento: </Text>
                 {item.data}
             </Text>
 
             {/*Horario comeco*/} 
             <Text style={styles.campoTexto}>
-                <Text style={styles.label}> Horario comeco:</Text>
-                {item.horarioComeco}
+                <Text style={styles.label}> Horario comeco: </Text>
+                {item.horario_comeco}
             </Text>
 
             {/*Horario fim*/} 
             <Text style={styles.campoTexto}>
-                <Text style={styles.label}> Horario fim:</Text>
-                {item.horarioFim}
+                <Text style={styles.label}> Horario fim: </Text>
+                {item.horario_comeco}
             </Text>
 
             {/*Preço Base*/} 
             <Text style={styles.campoTexto}>
-                <Text style={styles.label}> Preço Base:</Text>
-                {item.precoBase}
+                <Text style={styles.label}> Preço Base: </Text>
+                R${item.preco_base}
             </Text>
         </View>
     )
 
 
-    return null
+    return (
+        <View style={styles.container}>
+
+            {/*Adicionar o background image*/}
+            <Image
+                source={require('@/assets/images/bg_padrao.jpg')}
+                style={[StyleSheet.absoluteFill, styles.bgImage]}
+                resizeMode="cover"
+            />
+            
+            <Text style={styles.titulo}>Divulgação de Eventos</Text>
+            {carregamento ? (
+                <ActivityIndicator size="large" color={COR_CUPOM}/>
+            ) : (
+                <FlatList
+                    data={divulgacaoEvento}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={renderItem}
+                    contentContainerStyle = {{paddingBottom: 110}}
+                />
+            )}
+            <TouchableOpacity
+                style={styles.fab}
+                onPress={() => {}/*navigation.navigate('CriarDivulgacaoEvento')*/}
+            >
+                <Ionicons name="add" size={28} color="#fff"/>
+            </TouchableOpacity>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
