@@ -1,6 +1,7 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import { useState } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
 import { Evento } from "../evento/EventosScreen";
 
 
@@ -43,7 +44,24 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
         setCarregamento(false)
     }
     
+    useFocusEffect(
+        useCallback(() => {
+            fetchDados()
+        }, [])
+    )
     
+    const handleDelete = async (id: number) => {
+        const res = await fetch(`http://localhost:8000/divulgacao_evento/${id}/`, {
+            method: 'DELETE',
+        })
+        setDivulgacaoEvento(prev => prev.filter(cupom => cupom.id !== id))
+    }
+
+    //converter ID do evento para nome
+    const getNomeEvento = (id:number) => {
+        const encontrado = eventos.find((e) => e.id === id)
+        return encontrado ? encontrado.nome : `Evento #${id}`
+    }
     
     return null
 }
