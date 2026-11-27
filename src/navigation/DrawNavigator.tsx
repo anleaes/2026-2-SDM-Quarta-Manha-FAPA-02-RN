@@ -11,9 +11,9 @@ import CriarCupomScreen from '@/screens/cupom/CriarCupomScreen';
 import CuponsScreen, { Cupom } from '@/screens/cupom/CuponsScreen';
 import EditarCupomScreen from '@/screens/cupom/EditarCupomScreen';
 
+import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
 import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
-import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
 
 import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
 import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
@@ -23,7 +23,7 @@ import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen
 import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScreen';
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
-import HomeScreen from '@/screens/Homescreen';
+import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
