@@ -5,6 +5,7 @@ import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Evento } from "../evento/EventosScreen";
+import { Sede } from "../sede/SedesScreen";
 
 
 type Props = DrawerScreenProps<DrawerParamList, 'DivulgacaoEvento'>
@@ -31,18 +32,22 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
 
     const [divulgacaoEvento, setDivulgacaoEvento] = useState<DivulgacaoEvento[]>([])
     const [eventos, setEventos] = useState<Evento[]>([])
+    const [sedes, setSedes] = useState<Sede[]>([])
     const [carregamento, setCarregamento] = useState(true)
     
     const fetchDados = async() => {
         setCarregamento(true)
-        const [resDivulgacaoEvento, resEventos] = await Promise.all([
+        const [resDivulgacaoEvento, resEventos, resSede] = await Promise.all([
             fetch('http://localhost:8000/divulgacao_evento/', { cache: 'no-store'}),
-            fetch('http://localhost:8000/evento/', { cache: 'no-store'})
+            fetch('http://localhost:8000/evento/', { cache: 'no-store'}),
+            fetch('http://localhost:8000/sede/', { cache: 'no-store'})
         ])
         const dataDivulgacaoEvento = await resDivulgacaoEvento.json()
         const dataEvento = await resEventos.json()
+        const dataSede = await resSede.json()
         setDivulgacaoEvento(dataDivulgacaoEvento)
         setEventos(dataEvento)
+        setSedes(dataSede)
         setCarregamento(false)
     }
     
@@ -65,6 +70,13 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
         return encontrado ? encontrado.nome : `Evento #${id}`
     }
     
+    //converter ID do evento para nome
+    const getNomeSede = (id:number) => {
+        const encontrado = sedes.find((s) => s.id === id)
+        return encontrado ? encontrado.nome : `Sede #${id}`
+    }
+    
+
     const renderItem = ({item}: {item: DivulgacaoEvento}) => (
         <View style={styles.card}>
 
@@ -106,7 +118,7 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
             {/*Local*/}
             <Text style={styles.campoTexto}>
                 <Text style={styles.label}> Local: </Text>
-                {item.local}
+                {getNomeSede(item.local)}
             </Text>
 
             {/*Data*/} 
