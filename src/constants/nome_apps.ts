@@ -19,7 +19,7 @@ export const NOME_APPS: AppItems[] = [
     {id: 'venda', label: 'Vendas', color: 'rgb(199, 216, 50)'},
     {id: 'ingresso', label: 'Ingressos', color: 'rgb(67, 88, 207)'},
     {id: 'evento', label: 'Eventos', color: 'rgb(2, 109, 25)', route: 'Evento'},
-    {id: 'divulgacao_evento', label: 'Divulgacões de Evento', color: 'rgb(145, 145, 145)'},
+    {id: 'divulgacao_evento', label: 'Divulgacões de Evento', color: 'rgb(145, 145, 145)', route: 'DivulgacaoEvento'},
     {id: 'cupom', label: 'Cupons', color: 'rgb(122, 33, 240)', route: 'Cupom'},
     {id: 'cartao_vip', label: 'Cartões VIP', color: 'rgb(221, 42, 42)'}
 ]

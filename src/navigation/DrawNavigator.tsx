@@ -15,6 +15,10 @@ import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScree
 import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 
+import DivulgacaoEventoScreen, { DivulgacaoEvento } from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
+import CriarDivulgacaoEvento from '@/screens/divulgacao_evento/CriarDivulgacaoEventosScreen';
+import EditarDivulgacaoEventoScreen from '@/screens/divulgacao_evento/EditarDivulgacaoEventosScreen';
+
 import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
 import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
 import EspectadoresScreen, { Espectador } from '@/screens/espectador/EspectadoresScreen';
@@ -46,6 +50,10 @@ export type DrawerParamList = {
     Beneficio: undefined,
     CriarBeneficio: undefined,
     EditarBeneficio: {beneficio: Beneficio},
+
+    DivulgacaoEvento: undefined,
+    CriarDivulgacaoEvento: undefined,
+    EditarDivulgacaoEvento: {divulgacao_evento: DivulgacaoEvento}
 
     Espectador: undefined,
     CriarEspectador: undefined,
@@ -178,6 +186,30 @@ const DrawerNavigator = () => {
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Editar Beneficio',
+                }}
+            />
+            <Drawer.Screen         
+                name='DivulgacaoEvento'
+                component={DivulgacaoEventoScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Divulgação de Eventos',
+                }}
+            />
+            <Drawer.Screen         
+                name='CriarDivulgacaoEvento'
+                component={CriarDivulgacaoEvento}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Divulgação de Eventos',
+                }}
+            />
+            <Drawer.Screen         
+                name='EditarDivulgacaoEvento'
+                component={EditarDivulgacaoEventoScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Divulgação de Eventos',
                 }}
             />
 
