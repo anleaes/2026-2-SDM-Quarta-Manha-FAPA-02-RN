@@ -16,7 +16,7 @@ import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScreen';
 
 import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
-// import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
+import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
 import EspectadoresScreen, { Espectador } from '@/screens/espectador/EspectadoresScreen';
 
 import HomeScreen from '@/screens/Homescreen';
@@ -45,7 +45,7 @@ export type DrawerParamList = {
 
     Espectador: undefined,
     CriarEspectador: undefined,
-    // EditarEspectador: {beneficio: Beneficio},
+    EditarEspectador: {espectador: Espectador},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -181,23 +181,22 @@ const DrawerNavigator = () => {
                     title: 'Espectador',
                 }}
             />
-            
-             <Drawer.Screen
+            <Drawer.Screen
                 name='CriarEspectador'
                 component={CriarEspectadorScreen}
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Criar Espectador',
                 }}
-            />{/* 
-             <Drawer.Screen
+            />
+            <Drawer.Screen
                 name='EditarEspectador'
                 component={EditarEspectadorScreen}
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Editar Espectador',
                 }}
-            /> */}
+            />
 
 
         </Drawer.Navigator>

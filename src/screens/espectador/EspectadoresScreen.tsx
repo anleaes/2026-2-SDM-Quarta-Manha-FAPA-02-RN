@@ -68,7 +68,7 @@ const EspectadoresScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style= {styles.editButton}
-                    onPress={() => {} /*navigation.navigate('EditarEspectador', { espectador: item})*/}
+                    onPress={ () => navigation.navigate('EditarEspectador', { espectador: item}) }
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>
