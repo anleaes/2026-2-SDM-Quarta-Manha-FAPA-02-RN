@@ -1,8 +1,9 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
+import Ionicons from "@react-native-vector-icons/ionicons";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Evento } from "../evento/EventosScreen";
 
 
@@ -119,12 +120,39 @@ const CuponsScreen = ({navigation}: Props) => {
                     </Text>
                 )}
             </View>
-
         </View>
     )
 
 
-    return null
+    return (
+        <View style={styles.container}>
+
+            {/*Adicionar o background image*/}
+            <Image
+                source={require('@/assets/images/bg_padrao.jpg')}
+                style={[StyleSheet.absoluteFill, styles.bgImage]}
+                resizeMode="cover"
+            />
+            
+            <Text style={styles.titulo}>Cupons</Text>
+            {carregamento ? (
+                <ActivityIndicator size="large" color={COR_CUPOM}/>
+            ) : (
+                <FlatList
+                    data={cupons}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={renderItem}
+                    contentContainerStyle = {{paddingBottom: 110}}
+                />
+            )}
+            <TouchableOpacity
+                style={styles.fab}
+                onPress={() => navigation.navigate('CriarCupom')}
+            >
+                <Ionicons name="add" size={28} color="#fff"/>
+            </TouchableOpacity>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
