@@ -51,6 +51,13 @@ const CuponsScreen = ({navigation}: Props) => {
         setCupons(prev => prev.filter(cupom => cupom.id !== id))
     }
 
+    //converter ID do evento para nome
+    const getNomeEvento = (id:number) => {
+        const encontrado = eventos.find((e) => e.id === id)
+        return encontrado ? encontrado.nome : `Evento #${id}`
+    }
+
+
     return null
 }
 
