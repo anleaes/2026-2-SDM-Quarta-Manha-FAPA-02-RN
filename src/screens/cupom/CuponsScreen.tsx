@@ -44,6 +44,12 @@ const CuponsScreen = ({navigation}: Props) => {
         }, [])
     )
 
+    const handleDelete = async (id: number) => {
+        const res = await fetch(`http://localhost:8000/cupom/${id}/`, {
+            method: 'DELETE',
+        })
+        setCupons(prev => prev.filter(cupom => cupom.id !== id))
+    }
 
     return null
 }
