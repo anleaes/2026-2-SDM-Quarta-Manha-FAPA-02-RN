@@ -8,6 +8,10 @@ type Props = DrawerScreenProps<DrawerParamList, "EditarDivulgacaoEvento">
 const COR_ENTIDADE = 'rgb(145, 145, 145)'
 
 const EditarDivulgacaoEventoScreen = ({navigation, route}: Props) => {
+    
+    const {divulgacao_evento} = route.params
+    
+    
     return null
 }
 

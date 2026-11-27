@@ -72,7 +72,7 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style={styles.editButton}
-                    onPress={() =>  {} /*navigation.navigate("EditarDivulgacaoEvento", {divulgacao_evento: item})*/}
+                    onPress={() =>  navigation.navigate("EditarDivulgacaoEvento", {divulgacao_evento: item})}
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>
