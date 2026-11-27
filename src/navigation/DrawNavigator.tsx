@@ -23,6 +23,10 @@ import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen
 import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScreen';
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
+// import CriarAssinaturaScreen from '@/screens/assinatura/CriarAssinaturaScreen';
+// import EditarAssinaturaScreen from '@/screens/assinatura/EditarAssinaturaScreen';
+import AssinaturasScreen, { Assinatura } from '@/screens/assinatura/AssinaturasScreen';
+
 import HomeScreen from '@/screens/HomeScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -54,6 +58,10 @@ export type DrawerParamList = {
     Funcionario: undefined,
     CriarFuncionario: undefined,
     EditarFuncionario: {funcionario: Funcionario},
+
+    Assinatura: undefined,
+    // CriarAssinatura: undefined,
+    // EditarAssinatura: {funcionario: Funcionario},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -231,6 +239,31 @@ const DrawerNavigator = () => {
                     title: 'Editar Funcionario',
                 }}
             />
+
+            <Drawer.Screen         
+                name='Assinatura'
+                component={AssinaturasScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Assinatura',
+                }}
+            />
+            {/* <Drawer.Screen
+                name='CriarAssinatura'
+                component={CriarAssinaturaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Assinatura',
+                }}
+            /> 
+            <Drawer.Screen
+                name='EditarAssinatura'
+                component={EditarAssinaturaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Assinatura',
+                }}
+            /> */}
 
         </Drawer.Navigator>
     )
