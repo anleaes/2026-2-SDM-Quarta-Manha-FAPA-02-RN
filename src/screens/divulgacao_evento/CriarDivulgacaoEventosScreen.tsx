@@ -1,6 +1,5 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { Picker } from "@expo/ui";
-import Ionicons from "@react-native-vector-icons/ionicons";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
@@ -18,8 +17,10 @@ const COR_ENTIDADE = 'rgb(145, 145, 145)'
 
 const CriarDivulgacaoEvento = ({navigation}: Props) => {
     
-    const [evento, setEvento] = useState<Evento[]>([])
-    const [sede, setSede] = useState<Sede[]>([])
+    const [eventos, setEvento] = useState<Evento[]>([])
+    const [sedes, setSede] = useState<Sede[]>([])
+    const [eventoId, setEventoId] = useState(0)
+    const [sedeId, setSedeId] = useState(0)
     const [data, setData] = useState('')
     const [horarioComeco,setHorarioComeco] = useState('')
     const [horarioFim,setHorarioFim] = useState('')
@@ -46,8 +47,8 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
 
     useFocusEffect(
         useCallback(() => {
-            setEvento([])
-            setSede([])
+            setEventoId(0)
+            setSedeId(0)
             setData('')
             setHorarioComeco('')
             setHorarioFim('')
@@ -59,12 +60,12 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
 
     const handleSave = async() => {
 
-        if(evento.length === 0){
+        if(!eventoId){
             setErro('Selecione pelo menos um evento válido.')
             return
         }
 
-        if(sede.length === 0){
+        if(!sedeId){
             setErro('Selecione pelo menos um evento válido.')
             return
         }
@@ -84,7 +85,7 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
             return
         }
 
-        if(precoBase.length === 0) {
+        if(precoBase.trim()) {
             setErro('Informe um preço')
             return
         }
@@ -103,9 +104,9 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
                     data: data,
                     horario_comeco: horarioComeco,
                     horario_fim: horarioFim,
-                    preco_base: precoBase,
-                    evento: evento,
-                    local: sede
+                    preco_base: precoBase.replace(',', '.'),
+                    evento: eventoId,
+                    local: sedeId
                 })
             })
 
@@ -142,54 +143,99 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
                     {/*Evento*/}
                     <View style={styles.campoGrupo}>
                         <Text> Evento: </Text>
-                        <Picker selectedValue={evento} onValueChange={evento}>
-                            {SEDE_STATUS.map(s => (
-                                <Picker.Item key={s.value} label={s.label} value={s.value} />
+                        <Picker selectedValue={eventoId} onValueChange={setEventoId}>
+                            <Picker.Item label="Selecione um evento" value={0} />
+                            {eventos.map((e) => (
+                                <Picker.Item key={e.id} label={e.nome} value={e.id}/>
                             ))}
                         </Picker>
                     </View>
                     
+                    {/*Sede*/}
+                    <View style={styles.campoGrupo}>
+                        <Text> Sede: </Text>
+                        <Picker selectedValue={sedeId} onValueChange={setSedeId}>
+                            <Picker.Item label="Selecione uma sede" value={0} />
+                            {eventos.map((s) => (
+                                <Picker.Item key={s.id} label={s.nome} value={s.id}/>
+                            ))}
+                        </Picker>
+                    </View>
 
-
-                    {/*Data de vencimento*/}
+                    {/*Data*/}
                     <View style={styles.campoGrupo}>
                         <View style={styles.labelContainer}>
-                            <Text style={styles.label}>Data de Vencimento:</Text>
+                            <Text style={styles.label}>Data:</Text>
                         </View>
 
                         <TextInput
-                            value={dataVencimento}
-                            onChangeText={setDataVencimento}
+                            value={data}
+                            onChangeText={setData}
                             style={styles.input}
                             placeholder="AAAA-MM-DD (ex: 2026-01-01)"
                             maxLength={10}
                         />
                     </View>
 
-                    {/*Eventos validos*/}
+                    {/*Data*/}
                     <View style={styles.campoGrupo}>
                         <View style={styles.labelContainer}>
-                            <Text style={styles.label}>Eventos Válidos:</Text>
+                            <Text style={styles.label}>Data:</Text>
                         </View>
-                        <View style={styles.checkboxList}>
-                            {eventosValidos.map((ev) => {
-                                const marcado = eventosSelecionados.includes(ev.id)
-                                return(
-                                    <TouchableOpacity
-                                        key={ev.id}
-                                        style={styles.checkboxItem}
-                                        onPress={() => toggleEvento(ev.id)}
-                                    >
-                                        <Ionicons
-                                            name={marcado ? "checkbox" : "square-outline"}
-                                            size={22}
-                                            color={marcado ? COR_ENTIDADE : "#444"}
-                                        />
-                                        <Text style={styles.checkboxLabel}>{ev.nome}</Text>
-                                    </TouchableOpacity>
-                                )
-                            })}
+
+                        <TextInput
+                            value={data}
+                            onChangeText={setData}
+                            style={styles.input}
+                            placeholder="AAAA-MM-DD (ex: 2026-01-01)"
+                            maxLength={10}
+                        />
+                    </View>
+
+                    {/*Horario Comeco*/}
+                    <View style={styles.campoGrupo}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Horario de Inicio:</Text>
                         </View>
+
+                        <TextInput
+                            value={horarioComeco}
+                            onChangeText={setHorarioComeco}
+                            style={styles.input}
+                            placeholder="HH-MM-SS (ex: 11:42:01)"
+                            maxLength={8}
+                        />
+                    </View>
+
+                    {/*Horario Fim*/}
+                    <View style={styles.campoGrupo}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Horario de Termino:</Text>
+                        </View>
+
+                        <TextInput
+                            value={horarioFim}
+                            onChangeText={setHorarioFim}
+                            style={styles.input}
+                            placeholder="HH-MM-SS (ex: 11:42:01)"
+                            maxLength={8}
+                        />
+                    </View>
+
+                    {/*Preco Base*/}
+                    <View style={styles.campoGrupo}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Preço Base:</Text>
+                        </View>
+
+                        <TextInput
+                            value={precoBase}
+                            onChangeText={setPrecoBase}
+                            keyboardType="decimal-pad"
+                            style={styles.input}
+                            placeholder="Ex: 22.00"
+                            maxLength={8}
+                        />
                     </View>
 
                     {/*Botão para envio*/}
@@ -208,7 +254,7 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
                         <TouchableOpacity
                             style={styles.voltarButton}
                             activeOpacity={0.75}
-                            onPress={() => navigation.navigate("Cupom")}
+                            onPress={() => navigation.navigate('DivulgacaoEvento')}
                         >
                             <Text>VOLTAR</Text>
                         </TouchableOpacity>
