@@ -104,6 +104,22 @@ const CuponsScreen = ({navigation}: Props) => {
             </Text>
 
 
+            {/*Lista de Eventos validos para o cupom*/} 
+            <Text style={[styles.label, {marginTop: 6}]}>[ Eventos Válidos ]</Text>
+            <View style={styles.listaEventos}>
+                {item.eventos_validos.length > 0 ? (
+                    item.eventos_validos.map((eventoId) => (
+                        <Text key={eventoId} style={styles.itemEvento}>
+                            • {getNomeEvento(eventoId)}
+                        </Text>
+                    ))
+                ) : (
+                    <Text style={styles.itemEvento}>
+                        Nenhum evento vinculado.
+                    </Text>
+                )}
+            </View>
+
         </View>
     )
 
@@ -190,6 +206,15 @@ const styles = StyleSheet.create({
         paddingVertical: 6,
         paddingHorizontal: 12,
         borderRadius: 10,
+    },
+    listaEventos: {
+        marginTop: 4,
+        paddingLeft: 14
+    },
+    itemEvento: {
+        fontSize: 14,
+        color: '#111',
+        marginBottom: 2
     },
     fab: {
         position: 'absolute',
