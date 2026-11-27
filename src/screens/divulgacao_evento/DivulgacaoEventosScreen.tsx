@@ -81,7 +81,7 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
                     style={styles.deleteButton}
                     onPress={() => handleDelete(item.id)}
                 >
-                    <Text>Deletar</Text>
+                    <Text style={styles.buttonText}>Deletar</Text>
                 </TouchableOpacity>
             </View>
 
@@ -124,7 +124,7 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
             {/*Horario fim*/} 
             <Text style={styles.campoTexto}>
                 <Text style={styles.label}> Horario fim: </Text>
-                {item.horario_comeco}
+                {item.horario_fim}
             </Text>
 
             {/*Preço Base*/} 
@@ -159,7 +159,7 @@ const DivulgacaoEventoScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => {}/*navigation.navigate('CriarDivulgacaoEvento')*/}
+                onPress={() => navigation.navigate('CriarDivulgacaoEvento')}
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>

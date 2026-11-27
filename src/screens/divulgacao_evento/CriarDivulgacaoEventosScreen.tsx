@@ -85,7 +85,7 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
             return
         }
 
-        if(precoBase.trim()) {
+        if(!precoBase.trim()) {
             setErro('Informe um preço')
             return
         }
@@ -142,8 +142,11 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
 
                     {/*Evento*/}
                     <View style={styles.campoGrupo}>
-                        <Text> Evento: </Text>
-                        <Picker selectedValue={eventoId} onValueChange={setEventoId}>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}> Evento: </Text>
+                        </View>
+                    
+                        <Picker  selectedValue={eventoId} onValueChange={setEventoId}>
                             <Picker.Item label="Selecione um evento" value={0} />
                             {eventos.map((e) => (
                                 <Picker.Item key={e.id} label={e.nome} value={e.id}/>
@@ -153,28 +156,16 @@ const CriarDivulgacaoEvento = ({navigation}: Props) => {
                     
                     {/*Sede*/}
                     <View style={styles.campoGrupo}>
-                        <Text> Sede: </Text>
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}> Sede: </Text>
+                        </View>
+
                         <Picker selectedValue={sedeId} onValueChange={setSedeId}>
                             <Picker.Item label="Selecione uma sede" value={0} />
-                            {eventos.map((s) => (
+                            {sedes.map((s) => (
                                 <Picker.Item key={s.id} label={s.nome} value={s.id}/>
                             ))}
                         </Picker>
-                    </View>
-
-                    {/*Data*/}
-                    <View style={styles.campoGrupo}>
-                        <View style={styles.labelContainer}>
-                            <Text style={styles.label}>Data:</Text>
-                        </View>
-
-                        <TextInput
-                            value={data}
-                            onChangeText={setData}
-                            style={styles.input}
-                            placeholder="AAAA-MM-DD (ex: 2026-01-01)"
-                            maxLength={10}
-                        />
                     </View>
 
                     {/*Data*/}
