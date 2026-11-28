@@ -16,7 +16,7 @@ const COR_ENTIDADE = 'rgb(199, 216, 50)'
 const STATUS = [
     { label: 'Andamento', value: 'A' },
     { label: 'Cancelado', value: 'CA' },
-    { label: 'Outro-Concluido', value: 'CO' },
+    { label: 'Concluido', value: 'CO' },
 ];
 
 
@@ -94,7 +94,7 @@ const CriarVendaScreen = ({navigation}: Props) => {
             })
 
             if(!res.ok){
-                setErro('Erro ao salvar divulgacao evento. Verifique os campos.')
+                setErro('Erro ao salvar venda. Verifique os campos.')
                 return
             }
 
@@ -145,7 +145,7 @@ const CriarVendaScreen = ({navigation}: Props) => {
                         </View>
 
                         <Picker selectedValue={pagadorId} onValueChange={setPagadorId}>
-                            <Picker.Item label="Selecione uma sede" value={0} />
+                            <Picker.Item label="Selecione um pagador" value={0} />
                             {pagador.map((p) => (
                                 <Picker.Item key={p.id} label={p.nome} value={p.id}/>
                             ))}
@@ -158,7 +158,7 @@ const CriarVendaScreen = ({navigation}: Props) => {
                             <Text style={styles.label}> Status: </Text>
                         </View>
 
-                        <Picker selectedValue={pagadorId} onValueChange={setPagadorId}>
+                        <Picker selectedValue={status} onValueChange={setStatus}>
                             {STATUS.map((s) => (
                                 <Picker.Item key={s.value} label={s.label} value={s.value}/>
                             ))}
