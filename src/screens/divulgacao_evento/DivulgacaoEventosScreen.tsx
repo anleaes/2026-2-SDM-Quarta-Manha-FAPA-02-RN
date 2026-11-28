@@ -1,7 +1,7 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import Ionicons from "@react-native-vector-icons/ionicons";
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import { useFocusEffect } from "expo-router";
+import { useFocusEffect } from "@react-navigation/native";
 import { useCallback, useState } from "react";
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Evento } from "../evento/EventosScreen";

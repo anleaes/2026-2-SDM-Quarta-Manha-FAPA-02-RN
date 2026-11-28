@@ -1,7 +1,7 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { Picker } from "@expo/ui";
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import { useFocusEffect } from "expo-router";
+import { useFocusEffect } from "@react-navigation/native";
 import { useCallback, useState } from "react";
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Evento } from "../evento/EventosScreen";
