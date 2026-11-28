@@ -1,6 +1,7 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { DrawerScreenProps } from "@react-navigation/drawer";
-import { useState } from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
 import { Espectador } from "../espectador/EspectadoresScreen";
 import { Funcionario } from "../funcionario/FuncionariosScreen";
 
@@ -27,7 +28,32 @@ const EditarVendaScreen = ({navigation, route}: Props) => {
     const [saving, setSaving] = useState(false)
     const [erro, setErro] = useState('')
 
+    const fetchForeigns = async() => {
+        try{
+            const [resFuncionario, resEspectador] = await Promise.all([
+                fetch('http://localhost:8000/funcionario/'),
+                fetch('http://localhost:8000/espectador/')
+            ])
+            const dataFuncionario = await resFuncionario.json()
+            const dataEspectador = await resEspectador.json()
 
+            setFuncionario(dataFuncionario)
+            setPagador(dataEspectador)
+
+        }catch(e){
+            setErro('Não foi possivel carregar as foreigns datas.')
+        }
+    }
+
+    useFocusEffect(
+        useCallback(() => {
+            setFuncionarioId(venda.funcionario)
+            setPagadorId(venda.pagador)
+            setStatus(venda.status)
+            setErro('')
+            fetchForeigns()
+        }, [venda])
+    )
 
     return null
 }
