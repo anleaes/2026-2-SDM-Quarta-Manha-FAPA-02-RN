@@ -163,7 +163,7 @@ const AssinaturasScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => {} /*navigation.navigate('CriarAssinatura')*/ }
+                onPress={() => navigation.navigate('CriarAssinatura') }
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>
