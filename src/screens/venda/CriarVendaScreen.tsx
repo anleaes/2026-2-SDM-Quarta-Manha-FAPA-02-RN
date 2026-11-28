@@ -24,9 +24,9 @@ const CriarVendaScreen = ({navigation}: Props) => {
 
     const [funcionario, setFuncionario] = useState<Funcionario[]>([])
     const [pagador, setPagador] = useState<Espectador[]>([])
-    const [eventoId, setEventoId] = useState(0)
-    const [sedeId, setSedeId] = useState(0)
-    const [status, setStatus] = useState('')
+    const [funcionarioId, setFuncionarioId] = useState(0)
+    const [pagadorId, setPagadorId] = useState(0)
+    const [status, setStatus] = useState('A')
     const [saving, setSaving] = useState(false)
     const [erro, setErro] = useState('')
 
@@ -49,13 +49,61 @@ const CriarVendaScreen = ({navigation}: Props) => {
 
     useFocusEffect(
         useCallback(() => {
-            setEventoId(0)
-            setSedeId(0)
-            setStatus('')
+            setFuncionarioId(0)
+            setPagadorId(0)
+            setStatus('A')
             setErro('')
             fetchForeigns()
         }, [])
     )
+
+    const handleSave = async() => {
+
+        if(!funcionarioId){
+            setErro('Selecione pelo menos um funcionario válido.')
+            return
+        }
+
+        if(!pagadorId){
+            setErro('Selecione pelo menos um pagador válido.')
+            return
+        }
+
+        if(!status.trim()) {
+            setErro('Informe um preço')
+            return
+        }
+
+        setErro('')
+        setSaving(true)
+
+        try{
+            const res = await fetch('http://localhost:8000/venda/', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+
+                    funcionario: funcionarioId,
+                    pagador: pagadorId,
+                    status: status
+                })
+            })
+
+            if(!res.ok){
+                setErro('Erro ao salvar divulgacao evento. Verifique os campos.')
+                return
+            }
+
+            navigation.navigate("DivulgacaoEvento")
+        }catch(e){
+            setErro('Não foi possivel conectar a API.')
+        }finally {
+            setSaving(false)
+        }
+    }
+
 
     return null
 }
