@@ -56,6 +56,18 @@ const VendasScreen = ({navigation}: Props) => {
         setVenda(prev => prev.filter(venda => venda.id !== id))
     }
 
+    //converter ID do funcionario para nome
+    const getNomeFuncionario = (id:number) => {
+        const encontrado = funcionario.find((f) => f.id === id)
+        return encontrado ? encontrado.nome : `Funcionario #${id}`
+    }
+    
+    //converter ID do espectador para nome
+    const getNomePagador = (id:number) => {
+        const encontrado = pagador.find((p) => p.id === id)
+        return encontrado ? encontrado.nome : `Pagador #${id}`
+    }
+
     return null
 }
 
