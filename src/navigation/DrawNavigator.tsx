@@ -27,8 +27,10 @@ import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen
 import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScreen';
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
-import HomeScreen from '@/screens/HomeScreen';
 import VendasScreen from '@/screens/venda/VendasScreen';
+
+import HomeScreen from '@/screens/HomeScreen';
+import CriarVendaScreen from '@/screens/venda/CriarVendaScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
@@ -65,6 +67,7 @@ export type DrawerParamList = {
     EditarFuncionario: {funcionario: Funcionario},
 
     Venda: undefined,
+    CriarVenda: undefined
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -273,6 +276,14 @@ const DrawerNavigator = () => {
                 options={{
                     drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
                     title: 'Vendas',
+                }}
+            />
+            <Drawer.Screen
+                name='CriarVenda'
+                component={CriarVendaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Venda',
                 }}
             />
 

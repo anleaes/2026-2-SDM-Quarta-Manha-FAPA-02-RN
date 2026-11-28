@@ -19,8 +19,8 @@ export type Venda = {
     status: string
 }
 
-const COR_CUPOM = 'rgb(199, 216, 50)'
-const COR_CUPOM_SEC = 'rgba(255, 255, 0, 0.151)'
+const COR_APP = 'rgb(199, 216, 50)'
+const COR_APP_SEC = 'rgba(255, 255, 0, 0.151)'
 
 const VendasScreen = ({navigation}: Props) => {
     
@@ -149,7 +149,7 @@ const VendasScreen = ({navigation}: Props) => {
             
             <Text style={styles.titulo}>Vendas</Text>
             {carregamento ? (
-                <ActivityIndicator size="large" color={COR_CUPOM}/>
+                <ActivityIndicator size="large" color={COR_APP}/>
             ) : (
                 <FlatList
                     data={venda}
@@ -191,8 +191,8 @@ const styles = StyleSheet.create({
         textShadowRadius: 2
     },
     card: {
-        backgroundColor: COR_CUPOM_SEC,
-        borderColor: COR_CUPOM,
+        backgroundColor: COR_APP_SEC,
+        borderColor: COR_APP,
         padding: 12,
         borderRadius: 14,
         borderWidth: 3,
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     },
     containerCabecalho: {
         borderBottomWidth: 3,
-        borderBottomColor: COR_CUPOM,
+        borderBottomColor: COR_APP,
         borderStyle: 'dashed',
         paddingBottom: 6,
         marginBottom: 8
