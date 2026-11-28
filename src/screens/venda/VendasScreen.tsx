@@ -160,7 +160,7 @@ const VendasScreen = ({navigation}: Props) => {
             )}
             <TouchableOpacity
                 style={styles.fab}
-                onPress={() => {} /*navigation.navigate('CriarVenda')*/}
+                onPress={() => navigation.navigate('CriarVenda')}
             >
                 <Ionicons name="add" size={28} color="#fff"/>
             </TouchableOpacity>
