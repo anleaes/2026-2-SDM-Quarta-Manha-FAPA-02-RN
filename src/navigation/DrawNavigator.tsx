@@ -15,6 +15,10 @@ import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScree
 import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 
+import CriarDivulgacaoEvento from '@/screens/divulgacao_evento/CriarDivulgacaoEventosScreen';
+import DivulgacaoEventoScreen, { DivulgacaoEvento } from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
+import EditarDivulgacaoEventoScreen from '@/screens/divulgacao_evento/EditarDivulgacaoEventosScreen';
+
 import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
 import EditarEspectadorScreen from '@/screens/espectador/EditarEspectadorScreen';
 import EspectadoresScreen, { Espectador } from '@/screens/espectador/EspectadoresScreen';
@@ -27,7 +31,11 @@ import CriarAssinaturaScreen from '@/screens/assinatura/CriarAssinaturaScreen';
 import EditarAssinaturaScreen from '@/screens/assinatura/EditarAssinaturaScreen';
 import AssinaturasScreen, { Assinatura } from '@/screens/assinatura/AssinaturasScreen';
 
+import VendasScreen, { Venda } from '@/screens/venda/VendasScreen';
+
 import HomeScreen from '@/screens/HomeScreen';
+import CriarVendaScreen from '@/screens/venda/CriarVendaScreen';
+import EditarVendaScreen from '@/screens/venda/EditarVendaScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
@@ -51,6 +59,10 @@ export type DrawerParamList = {
     CriarBeneficio: undefined,
     EditarBeneficio: {beneficio: Beneficio},
 
+    DivulgacaoEvento: undefined,
+    CriarDivulgacaoEvento: undefined,
+    EditarDivulgacaoEvento: {divulgacao_evento: DivulgacaoEvento}
+
     Espectador: undefined,
     CriarEspectador: undefined,
     EditarEspectador: {espectador: Espectador},
@@ -62,6 +74,10 @@ export type DrawerParamList = {
     Assinatura: undefined,
     CriarAssinatura: undefined,
     EditarAssinatura: {assinatura: Assinatura},
+  
+    Venda: undefined,
+    CriarVenda: undefined,
+    EditarVenda: {venda: Venda}
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -188,6 +204,30 @@ const DrawerNavigator = () => {
                     title: 'Editar Beneficio',
                 }}
             />
+            <Drawer.Screen         
+                name='DivulgacaoEvento'
+                component={DivulgacaoEventoScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Divulgação de Eventos',
+                }}
+            />
+            <Drawer.Screen         
+                name='CriarDivulgacaoEvento'
+                component={CriarDivulgacaoEvento}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Divulgação de Eventos',
+                }}
+            />
+            <Drawer.Screen         
+                name='EditarDivulgacaoEvento'
+                component={EditarDivulgacaoEventoScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Divulgação de Eventos',
+                }}
+            />
 
             <Drawer.Screen         
                 name='Espectador'
@@ -264,6 +304,33 @@ const DrawerNavigator = () => {
                     title: 'Editar Assinatura',
                 }}
             /> 
+        
+            <Drawer.Screen
+                name='Venda'
+                component={VendasScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Vendas',
+                }}
+            />
+        
+            <Drawer.Screen
+                name='CriarVenda'
+                component={CriarVendaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Venda',
+                }}
+            />
+        
+            <Drawer.Screen
+                name='EditarVenda'
+                component={EditarVendaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Venda',
+                }}
+            />
 
         </Drawer.Navigator>
     )
