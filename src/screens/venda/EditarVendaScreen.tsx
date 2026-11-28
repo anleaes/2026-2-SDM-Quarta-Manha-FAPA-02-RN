@@ -1,5 +1,8 @@
 import { DrawerParamList } from "@/navigation/DrawNavigator";
 import { DrawerScreenProps } from "@react-navigation/drawer";
+import { useState } from "react";
+import { Espectador } from "../espectador/EspectadoresScreen";
+import { Funcionario } from "../funcionario/FuncionariosScreen";
 
 
 type Props = DrawerScreenProps<DrawerParamList, "EditarVenda">
@@ -13,6 +16,19 @@ const STATUS = [
 ];
 
 const EditarVendaScreen = ({navigation, route}: Props) => {
+
+    const { venda } = route.params
+    
+    const [funcionario, setFuncionario] = useState<Funcionario[]>([])
+    const [pagador, setPagador] = useState<Espectador[]>([])
+    const [funcionarioId, setFuncionarioId] = useState(venda.funcionario)
+    const [pagadorId, setPagadorId] = useState(venda.pagador)
+    const [status, setStatus] = useState(venda.status)
+    const [saving, setSaving] = useState(false)
+    const [erro, setErro] = useState('')
+
+
+
     return null
 }
 
