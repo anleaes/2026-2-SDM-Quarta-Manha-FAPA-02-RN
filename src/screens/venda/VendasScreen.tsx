@@ -49,6 +49,12 @@ const VendasScreen = ({navigation}: Props) => {
         }, [])
     )
 
+    const handleDelete = async (id: number) => {
+        const res = await fetch(`http://localhost:8000/venda/${id}/`, {
+            method: 'DELETE',
+        })
+        setVenda(prev => prev.filter(venda => venda.id !== id))
+    }
 
     return null
 }
