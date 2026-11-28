@@ -55,6 +55,53 @@ const EditarVendaScreen = ({navigation, route}: Props) => {
         }, [venda])
     )
 
+    const handleSave = async() => {
+
+        if(!funcionarioId){
+            setErro('Selecione pelo menos um funcionario válido.')
+            return
+        }
+
+        if(!pagadorId){
+            setErro('Selecione pelo menos um pagador válido.')
+            return
+        }
+
+        if(!status.trim()) {
+            setErro('Informe um status')
+            return
+        }
+
+        setErro('')
+        setSaving(true)
+
+        try{
+            const res = await fetch(`http://localhost:8000/venda/${venda.id}/`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+
+                    funcionario: funcionarioId,
+                    pagador: pagadorId,
+                    status: status
+                })
+            })
+
+            if(!res.ok){
+                setErro('Erro ao salvar venda. Verifique os campos.')
+                return
+            }
+
+            navigation.navigate("Venda")
+        }catch(e){
+            setErro('Não foi possivel conectar a API.')
+        }finally {
+            setSaving(false)
+        }
+    }
+
     return null
 }
 
