@@ -77,7 +77,7 @@ const VendasScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style={styles.editButton}
-                    onPress={() =>  {} /*navigation.navigate("EditarDivulgacaoEvento", {venda: item})*/}
+                    onPress={() => navigation.navigate("EditarVenda", {venda: item})}
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>
