@@ -24,7 +24,7 @@ import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScre
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
 import CriarAssinaturaScreen from '@/screens/assinatura/CriarAssinaturaScreen';
-// import EditarAssinaturaScreen from '@/screens/assinatura/EditarAssinaturaScreen';
+import EditarAssinaturaScreen from '@/screens/assinatura/EditarAssinaturaScreen';
 import AssinaturasScreen, { Assinatura } from '@/screens/assinatura/AssinaturasScreen';
 
 import HomeScreen from '@/screens/HomeScreen';
@@ -61,7 +61,7 @@ export type DrawerParamList = {
 
     Assinatura: undefined,
     CriarAssinatura: undefined,
-    // EditarAssinatura: {funcionario: Funcionario},
+    EditarAssinatura: {assinatura: Assinatura},
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -256,8 +256,6 @@ const DrawerNavigator = () => {
                     title: 'Criar Assinatura',
                 }}
             /> 
-            {/*
-
             <Drawer.Screen
                 name='EditarAssinatura'
                 component={EditarAssinaturaScreen}
@@ -266,8 +264,6 @@ const DrawerNavigator = () => {
                     title: 'Editar Assinatura',
                 }}
             /> 
-            
-            */}
 
         </Drawer.Navigator>
     )

@@ -65,7 +65,7 @@ const AssinaturasScreen = ({navigation}: Props) => {
             <View style={styles.cardBotoes}>
                 <TouchableOpacity
                     style= {styles.editButton}
-                    onPress={() => {} /* navigation.navigate('EditarAssinatura', { assinatura: item})*/ }
+                    onPress={() => navigation.navigate('EditarAssinatura', { assinatura: item}) }
                 >
                     <Text style={styles.buttonText}>Editar</Text>
                 </TouchableOpacity>
