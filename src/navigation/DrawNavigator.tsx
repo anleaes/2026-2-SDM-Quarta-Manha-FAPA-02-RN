@@ -15,8 +15,8 @@ import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScree
 import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 
-import DivulgacaoEventoScreen, { DivulgacaoEvento } from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
 import CriarDivulgacaoEvento from '@/screens/divulgacao_evento/CriarDivulgacaoEventosScreen';
+import DivulgacaoEventoScreen, { DivulgacaoEvento } from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
 import EditarDivulgacaoEventoScreen from '@/screens/divulgacao_evento/EditarDivulgacaoEventosScreen';
 
 import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
@@ -28,6 +28,7 @@ import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScre
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
 import HomeScreen from '@/screens/HomeScreen';
+import VendasScreen from '@/screens/venda/VendasScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
@@ -62,6 +63,8 @@ export type DrawerParamList = {
     Funcionario: undefined,
     CriarFuncionario: undefined,
     EditarFuncionario: {funcionario: Funcionario},
+
+    Venda: undefined,
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -261,6 +264,15 @@ const DrawerNavigator = () => {
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Editar Funcionario',
+                }}
+            />
+
+            <Drawer.Screen         
+                name='Venda'
+                component={VendasScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Vendas',
                 }}
             />
 

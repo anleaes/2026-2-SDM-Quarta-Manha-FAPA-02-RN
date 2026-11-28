@@ -16,7 +16,7 @@ export const NOME_APPS: AppItems[] = [
     {id: 'espectador', label: 'Espectadores', color: 'rgb(221, 169, 58)', route: 'Espectador'},
     {id: 'beneficio', label: 'Beneficios', color: 'rgb(137, 87, 202)', route: 'Beneficio'},
     {id: 'assinatura', label: 'Assinaturas', color: 'rgb(207, 67, 67)'},
-    {id: 'venda', label: 'Vendas', color: 'rgb(199, 216, 50)'},
+    {id: 'venda', label: 'Vendas', color: 'rgb(199, 216, 50)', route: 'Venda'},
     {id: 'ingresso', label: 'Ingressos', color: 'rgb(67, 88, 207)'},
     {id: 'evento', label: 'Eventos', color: 'rgb(2, 109, 25)', route: 'Evento'},
     {id: 'divulgacao_evento', label: 'Divulgacões de Evento', color: 'rgb(145, 145, 145)', route: 'DivulgacaoEvento'},
