@@ -15,8 +15,8 @@ import BeneficiosScreen, { Beneficio } from '@/screens/beneficio/BeneficiosScree
 import CriarBeneficioScreen from '@/screens/beneficio/CriarBeneficioScreen';
 import EditarBeneficioScreen from '@/screens/beneficio/EditarBeneficioScreen';
 
-import DivulgacaoEventoScreen, { DivulgacaoEvento } from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
 import CriarDivulgacaoEvento from '@/screens/divulgacao_evento/CriarDivulgacaoEventosScreen';
+import DivulgacaoEventoScreen, { DivulgacaoEvento } from '@/screens/divulgacao_evento/DivulgacaoEventosScreen';
 import EditarDivulgacaoEventoScreen from '@/screens/divulgacao_evento/EditarDivulgacaoEventosScreen';
 
 import CriarEspectadorScreen from '@/screens/espectador/CriarEspectadorScreen';
@@ -27,7 +27,11 @@ import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen
 import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScreen';
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
+import VendasScreen, { Venda } from '@/screens/venda/VendasScreen';
+
 import HomeScreen from '@/screens/HomeScreen';
+import CriarVendaScreen from '@/screens/venda/CriarVendaScreen';
+import EditarVendaScreen from '@/screens/venda/EditarVendaScreen';
 import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
@@ -62,6 +66,10 @@ export type DrawerParamList = {
     Funcionario: undefined,
     CriarFuncionario: undefined,
     EditarFuncionario: {funcionario: Funcionario},
+
+    Venda: undefined,
+    CriarVenda: undefined,
+    EditarVenda: {venda: Venda}
 }
 
 const Drawer = createDrawerNavigator<DrawerParamList>()
@@ -261,6 +269,31 @@ const DrawerNavigator = () => {
                 options={{
                     drawerItemStyle: { display: 'none'},
                     title: 'Editar Funcionario',
+                }}
+            />
+
+            <Drawer.Screen         
+                name='Venda'
+                component={VendasScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Vendas',
+                }}
+            />
+            <Drawer.Screen
+                name='CriarVenda'
+                component={CriarVendaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Venda',
+                }}
+            />
+            <Drawer.Screen
+                name='EditarVenda'
+                component={EditarVendaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Venda',
                 }}
             />
 
