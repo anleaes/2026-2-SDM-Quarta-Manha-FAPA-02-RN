@@ -27,6 +27,10 @@ import CriarFuncionarioScreen from '@/screens/funcionario/CriarFuncionarioScreen
 import EditarFuncionarioScreen from '@/screens/funcionario/EditarFuncionarioScreen';
 import FuncionariosScreen, { Funcionario } from '@/screens/funcionario/FuncionariosScreen';
 
+import CriarAssinaturaScreen from '@/screens/assinatura/CriarAssinaturaScreen';
+import EditarAssinaturaScreen from '@/screens/assinatura/EditarAssinaturaScreen';
+import AssinaturasScreen, { Assinatura } from '@/screens/assinatura/AssinaturasScreen';
+
 import VendasScreen, { Venda } from '@/screens/venda/VendasScreen';
 
 import HomeScreen from '@/screens/HomeScreen';
@@ -67,6 +71,10 @@ export type DrawerParamList = {
     CriarFuncionario: undefined,
     EditarFuncionario: {funcionario: Funcionario},
 
+    Assinatura: undefined,
+    CriarAssinatura: undefined,
+    EditarAssinatura: {assinatura: Assinatura},
+  
     Venda: undefined,
     CriarVenda: undefined,
     EditarVenda: {venda: Venda}
@@ -273,6 +281,31 @@ const DrawerNavigator = () => {
             />
 
             <Drawer.Screen         
+                name='Assinatura'
+                component={AssinaturasScreen}
+                options={{
+                    drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color}  />,
+                    title: 'Assinatura',
+                }}
+            />
+             <Drawer.Screen
+                name='CriarAssinatura'
+                component={CriarAssinaturaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Criar Assinatura',
+                }}
+            /> 
+            <Drawer.Screen
+                name='EditarAssinatura'
+                component={EditarAssinaturaScreen}
+                options={{
+                    drawerItemStyle: { display: 'none'},
+                    title: 'Editar Assinatura',
+                }}
+            /> 
+        
+            <Drawer.Screen
                 name='Venda'
                 component={VendasScreen}
                 options={{
@@ -280,6 +313,7 @@ const DrawerNavigator = () => {
                     title: 'Vendas',
                 }}
             />
+        
             <Drawer.Screen
                 name='CriarVenda'
                 component={CriarVendaScreen}
@@ -288,6 +322,7 @@ const DrawerNavigator = () => {
                     title: 'Criar Venda',
                 }}
             />
+        
             <Drawer.Screen
                 name='EditarVenda'
                 component={EditarVendaScreen}
